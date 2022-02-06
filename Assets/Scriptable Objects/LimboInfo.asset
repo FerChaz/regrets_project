@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe25dc3bdfec1c44b81b971b16cd3c7, type: 3}
+  m_Name: LimboInfo
+  m_EditorClassIdentifier: 
+  positionToGoInLimbo1: {x: -50, y: 1005, z: 0}
+  positionToGoInLimbo2: {x: 490, y: 1010, z: 0}
+  deathPosition: {x: -251.28998, y: -1.7218869, z: 0}
+  limboScene: Limbo1
+  deathScene: Intro
+  isPlayerInLimbo: 0
