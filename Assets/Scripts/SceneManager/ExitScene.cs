@@ -24,6 +24,7 @@ public class ExitScene : MonoBehaviour
     private Vector3 movement;
     public int direction;
 
+    public bool needToStopMusic;
 
 
     private void Awake()
@@ -47,6 +48,7 @@ public class ExitScene : MonoBehaviour
 
             StartCoroutine(WaitForFade());
 
+            _sceneManager.StopMusic(needToStopMusic);
         }
     }
 
