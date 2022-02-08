@@ -2415,6 +2415,7 @@ MonoBehaviour:
   inputDirection: 0
   isFacingRight: 1
   canMove: 1
+  canAttack: 1
   canJump: 1
   canDash: 1
   amountOfDash: 0
@@ -4608,6 +4609,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   topTime: 1
   direction: -1
+  needToStopMusic: 1
 --- !u!1001 &85862165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16187,6 +16189,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   topTime: 1
   direction: 1
+  musicIndex: 3
 --- !u!1001 &332057563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18226,6 +18229,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   topTime: 1
   direction: 1
+  musicIndex: 3
 --- !u!1001 &383279046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23699,7 +23703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &508020764
 Transform:
   m_ObjectHideFlags: 0
@@ -71094,6 +71098,7 @@ MonoBehaviour:
   comboPossible: 1
   doCombo: 0
   katana: {fileID: 0}
+  player: {fileID: 0}
   weapon: {fileID: 0}
   weaponParticle: {fileID: 0}
 --- !u!114 &1355078717
@@ -83103,6 +83108,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   topTime: 1
   direction: -1
+  needToStopMusic: 1
 --- !u!1001 &1651322702
 PrefabInstance:
   m_ObjectHideFlags: 0

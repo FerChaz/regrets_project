@@ -25,6 +25,7 @@ public class EntryScene : MonoBehaviour
     public float topTime = 1;
     private Vector3 movement;
     public float direction;
+    public int musicIndex;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class EntryScene : MonoBehaviour
             movement.Set(15f * direction, 0.0f, 0.0f);
             StartCoroutine(Move());
 
+            _sceneManager.StartMusic(musicIndex);
         }
     }
 
