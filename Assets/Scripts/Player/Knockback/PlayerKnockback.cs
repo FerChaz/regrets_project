@@ -8,8 +8,16 @@ public class PlayerKnockback : PlayerHabilities
 
     [Header("Knockback Variables")]
     [SerializeField] private Vector3 knockbackForce;
+    private PlayerCombatAC _playerCombatAnimator;
     private WaitForSeconds wait = new WaitForSeconds(1);
 
+    //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
+
+    protected override void Start()
+    {
+        _playerCombatAnimator.GetComponentInChildren<PlayerCombatAC>();
+        base.Start();
+    }
 
     //-- ENEMY KNOCKBACK -----------------------------------------------------------------------------------------------------------
 
@@ -32,8 +40,9 @@ public class PlayerKnockback : PlayerHabilities
         //bridgePlayerAudio.ReproduceFX("KnockBack");                   // KNOCKBACK / GET DAMAGE FX
         _player.CantMoveUntil(_player.timeToWait - 0.5f);
         _player.playerAnimator.SetTrigger("Get Hit");
+        _playerCombatAnimator.FinishCombo();
 
-        
+
     }
 
     //-- SPIKES KNOCKBACK ----------------------------------------------------------------------------------------------------------
@@ -55,6 +64,7 @@ public class PlayerKnockback : PlayerHabilities
 
         _player.CantMoveUntil(_player.timeToWait - 0.5f);
         _player.playerAnimator.SetTrigger("Get Hit");
+        _playerCombatAnimator.FinishCombo();
     }
 
     //-- DEATH KNOCKBACK -----------------------------------------------------------------------------------------------------------
@@ -64,6 +74,7 @@ public class PlayerKnockback : PlayerHabilities
         _player.canChangeGravity = false;
         _player.gravityScale = 0;
         movement.Set(0.0f, 10f, 0.0f);
+        _playerCombatAnimator.FinishCombo();
         _player.rigidBody.AddForce(movement, ForceMode.Impulse);
         _player.CantMoveUntil(_player.timeToWait);
         StartCoroutine(WaitToChangeGravity());
