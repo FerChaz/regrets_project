@@ -13,10 +13,9 @@ public class PlayerKnockback : PlayerHabilities
 
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
 
-    protected override void Start()
+    private void Awake()
     {
-        _playerCombatAnimator.GetComponentInChildren<PlayerCombatAC>();
-        base.Start();
+        _playerCombatAnimator = GetComponentInChildren<PlayerCombatAC>();
     }
 
     //-- ENEMY KNOCKBACK -----------------------------------------------------------------------------------------------------------

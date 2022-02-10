@@ -14,9 +14,13 @@ public class BossAnimatorController : MonoBehaviour
 
     public bool endAttackAnimation;
 
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
         endAttackAnimation = false;
     }
 

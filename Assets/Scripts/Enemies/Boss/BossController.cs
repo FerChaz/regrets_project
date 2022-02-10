@@ -50,11 +50,17 @@ public class BossController : MonoBehaviour
     [Header("Player")]
     public GameObject player;
 
+    [Header("Gravity")]
+    public float gravityScale = 1.0f;
+    public float globalGravity = -9.81f;
+    private Vector3 _gravity;
+    public bool canChangeGravity;
 
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerController>().gameObject;
         rigidBody = GetComponent<Rigidbody>();
         animatorController = GetComponentInChildren<BossAnimatorController>();
         boxCollider = GetComponent<CapsuleCollider>();
@@ -75,6 +81,10 @@ public class BossController : MonoBehaviour
         wallDetected = Physics.Raycast(_wallCheck.position, Vector3.right * facingDirection, _jumpCheckDistance, _whatIsGround);
     }
 
+    private void FixedUpdate()
+    {
+        SetGravity();
+    }
 
     //-- AUXILIAR ------------------------------------------------------------------------------------------------------------------
 
@@ -86,7 +96,13 @@ public class BossController : MonoBehaviour
 
     public void Entrance()
     {
-        rigidBody.useGravity = true;
+        //rigidBody.useGravity = true;
+    }
+
+    private void SetGravity()
+    {
+        _gravity = globalGravity * gravityScale * Vector3.up;
+        rigidBody.AddForce(_gravity, ForceMode.Acceleration);
     }
 
 
