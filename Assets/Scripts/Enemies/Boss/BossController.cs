@@ -105,7 +105,6 @@ public class BossController : MonoBehaviour
         rigidBody.AddForce(_gravity, ForceMode.Acceleration);
     }
 
-
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

@@ -25,6 +25,8 @@ public class BossJumpState : State
 
             _bossController.rigidBody.useGravity = false;
 
+            _bossController.animatorController.Jump();
+
             _bossController.parabolaRoot.transform.position = _bossController.transform.position;
             _bossController.startRoot.transform.position = _bossController.transform.position;
 
@@ -65,6 +67,7 @@ public class BossJumpState : State
 
     public override void ExitState()
     {
+        _bossController.animatorController.FinishJump();
         _bossController.rigidBody.useGravity = true;
     }
 

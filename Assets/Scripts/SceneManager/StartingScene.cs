@@ -42,7 +42,7 @@ public class StartingScene : MonoBehaviour
         sceneManager.ChangePlayerPosition(position);
 
         yield return new WaitForSeconds(2);
-        dialogue.ShowDialogue(dialogObject);
+        //dialogue.ShowDialogue(dialogObject);
         yield return new WaitForSeconds(1);
         playerAnimator.SetBool("Stand", true);
     }
