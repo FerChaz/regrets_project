@@ -16,17 +16,14 @@ public class BossDeathState : State
         if (_bossController != null)
         {
             _bossController.isAnyStateRunning = true;
+
+            _movement.Set(0.0f, 0.0f, 0.0f);
+            _bossController.animatorController.Defeated();
         }
     }
 
+    public override void UpdateState(float delta) {}
 
-    public override void ExitState()
-    {
-        throw new System.NotImplementedException();
-    }
+    public override void ExitState() {}
 
-    public override void UpdateState(float delta)
-    {
-        throw new System.NotImplementedException();
-    }
 }

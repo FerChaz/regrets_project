@@ -16,6 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     private float weaponHideCooldown;
 
     private PlayerCombatAC playerAnimator;
+    private PlayerController playerController;
 
     public bool canAttack;
 
@@ -23,6 +24,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Awake()
     {
+        playerController = GetComponent<PlayerController>();
         playerAnimator = player.GetComponentInChildren<PlayerCombatAC>();
     }
 
@@ -48,7 +50,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckCombatInput()
     {
-        if (Input.GetButtonDown("Attack") && canAttack)
+        if (Input.GetButtonDown("Attack") && playerController.canAttack)
         {
             weapon.SetActive(true);
             
@@ -57,7 +59,7 @@ public class PlayerCombatController : MonoBehaviour
             weaponHideCooldown = 3;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && canAttack)
+        if (Input.GetKeyDown(KeyCode.D) && playerController.canAttack)
         {
             TryToExecute();
         }

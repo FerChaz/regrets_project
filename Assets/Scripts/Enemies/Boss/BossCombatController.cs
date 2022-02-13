@@ -17,6 +17,7 @@ public class BossCombatController : MonoBehaviour
         _playerLife = FindObjectOfType<LifeController>();
         _playerSouls = FindObjectOfType<SoulController>();
         bossLife = GetComponent<EnemyLifeController>();
+        bossFSM = GetComponent<BossFSM>();
     }
 
     //-- DO DAMAGE -----------------------------------------------------------------------------------------------------------------

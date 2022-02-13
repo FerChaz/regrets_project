@@ -23,7 +23,7 @@ public class BossFSM : FiniteStateMachine
     private BossRollState _rollState = new BossRollState();
     private BossJumpState _jumpState = new BossJumpState();
     private BossAttackState _attackState = new BossAttackState();
-    //private DeathState _deathState = new DeathState();
+    private BossDeathState _deathState = new BossDeathState();
 
 
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
@@ -201,8 +201,10 @@ public class BossFSM : FiniteStateMachine
 
     public void Death()
     {
-        endGame.SetActive(true);
-        Destroy(this.gameObject);
+        StopAllCoroutines();
+        SwitchState(_deathState, _bossController);
+        //endGame.SetActive(true);
+        //Destroy(this.gameObject);
     }
 
 

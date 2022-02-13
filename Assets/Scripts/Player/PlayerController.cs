@@ -189,7 +189,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (mainCamera.isActiveAndEnabled)
                 {
-                    Debug.Log($"{mainCamera.enabled}");
                     mainCamera.FlipCameraX(multiplierX);
                 }
                 isFacingRight = !isFacingRight;
