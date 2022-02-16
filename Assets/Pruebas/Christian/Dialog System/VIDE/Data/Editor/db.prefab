@@ -43,148 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 9
+  fileIndex: 0
   skinIndex: 0
   loadTag: 
   startID: 0
   curFocusID: 0
-  currentID: 12223
+  currentID: 91632
   autosave: 1
   previewPanning: 0
-  currentDiag: 9
+  currentDiag: 0
   locEdit: 0
   pNodeID: 0
   aNodeID: 2
   S_playerDiags:
-  - commentCount: 2
-    s_comment:
-    - text: .... Okay....
-      extraData: 
-      inputSetIndex: 0
-      outputNodeIndex: -1
-      outActionIndex: 0
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    - text: Who are you again?
-      extraData: 
-      inputSetIndex: 0
-      outputNodeIndex: 2
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 300
-        y: 87
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 1
-    rect:
-      serializedVersion: 2
-      x: 240
-      y: 160
-      width: 348
-      height: 153
-    pTag: 
-    expand: 0
-    sprite: {fileID: 0}
-    vars: []
-    varKeys: []
-    isPlayer: 1
-  - commentCount: 2
-    s_comment:
-    - text: ...
-      extraData: 
-      inputSetIndex: 1
-      outputNodeIndex: -1
-      outActionIndex: 1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    - text: '[Leave]'
-      extraData: 
-      inputSetIndex: 1
-      outputNodeIndex: -1
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 4
-    rect:
-      serializedVersion: 2
-      x: 570
-      y: 400
-      width: 348
-      height: 273
-    pTag: 
-    expand: 1
-    sprite: {fileID: 0}
-    vars:
-    - 
-    varKeys:
-    - Key1
-    isPlayer: 1
   - commentCount: 1
     s_comment:
-    - text: I AM MR.CUBE
+    - text: "\xBFTu tambi\xE9n vienes a molestar?"
       extraData: ExtraData
-      inputSetIndex: 2
-      outputNodeIndex: 0
-      outActionIndex: -1
-      showmore: 1
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 0
-    rect:
-      serializedVersion: 2
-      x: 170
-      y: 360
-      width: 348
-      height: 158
-    pTag: 
-    expand: 0
-    sprite: {fileID: 0}
-    vars:
-    - 
-    varKeys:
-    - Key1
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: I WAS PROMISED COOKIES
-      extraData: ExtraData
-      inputSetIndex: 3
+      inputSetIndex: 0
       outputNodeIndex: 1
       outActionIndex: -1
       showmore: 0
@@ -197,14 +73,14 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 3
+    ID: 0
     rect:
       serializedVersion: 2
-      x: 180
-      y: 520
+      x: 70
+      y: 150
       width: 348
       height: 129
-    pTag: 
+    pTag: "\u602A\u7363"
     expand: 0
     sprite: {fileID: 0}
     vars: []
@@ -212,7 +88,112 @@ MonoBehaviour:
     isPlayer: 0
   - commentCount: 1
     s_comment:
-    - text: DON'T LEAVE ME
+    - text: "\xBFEn qu\xE9 me met\xED?"
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: 2
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 1
+    rect:
+      serializedVersion: 2
+      x: 480
+      y: 150
+      width: 348
+      height: 129
+    pTag: Kaori
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 1
+  - commentCount: 1
+    s_comment:
+    - text: "Solo eres otra m\xE1s que quiere mis tesoros."
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: 3
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 4
+    rect:
+      serializedVersion: 2
+      x: 890
+      y: 150
+      width: 348
+      height: 139
+    pTag: "\u602A\u7363"
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "\xBFQu\xE9? Yo no..."
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: 1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 6
+    rect:
+      serializedVersion: 2
+      x: 1270
+      y: 150
+      width: 348
+      height: 129
+    pTag: Kaori
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 1
+  - commentCount: 2
+    s_comment:
+    - text: "\xA1Silencio! Nunca te los dare."
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: 0
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Ahora muere
       extraData: ExtraData
       inputSetIndex: 4
       outputNodeIndex: -1
@@ -227,14 +208,14 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 6
+    ID: 7
     rect:
       serializedVersion: 2
-      x: 970
-      y: 630
+      x: 1880
+      y: 150
       width: 348
-      height: 129
-    pTag: 
+      height: 153
+    pTag: "\u602A\u7363"
     expand: 0
     sprite: {fileID: 0}
     vars: []
@@ -242,55 +223,180 @@ MonoBehaviour:
     isPlayer: 0
   S_actionNodes:
   - pauseHere: 0
-    gameObjectName: '[No object]'
-    methodName: '[No method]'
-    nameIndex: 0
-    methodIndex: 0
-    paramIndex: -1
+    gameObjectName: BossEntrance
+    methodName: StartFight
+    nameIndex: 10
+    methodIndex: 1
+    paramIndex: 0
     opts:
     - '[No method]'
+    - StartFight
     nameOpts:
     - '[No object]'
+    - BossDialogueEntrance
+    - Model
+    - HeartContainers
+    - katana-v1
+    - Main Camera
+    - Player
+    - Pause
+    - UIMANAGER
+    - HeartHolder
+    - BossEntrance
+    - LifeController
+    - Boss
+    - SoulController
+    - kaori-pelo-run-v3
+    - MainMenu
     param_bool: 0
     param_string: 
     param_int: 0
     param_float: 0
     rect:
       serializedVersion: 2
-      x: 720
-      y: 100
+      x: 2260
+      y: 150
       width: 200
-      height: 166
-    ID: 2
-    outPlayerIndex: -1
-    outActionIndex: -1
-    more: 1
-    ovrStartNode: 3
-    renameDialogue: MrMadCube
-  - pauseHere: 1
-    gameObjectName: '[No object]'
-    methodName: '[No method]'
-    nameIndex: 0
-    methodIndex: 0
-    paramIndex: -1
-    opts:
-    - '[No method]'
-    nameOpts:
-    - '[No object]'
-    param_bool: 0
-    param_string: 
-    param_int: 0
-    param_float: 0
-    rect:
-      serializedVersion: 2
-      x: 970
-      y: 100
-      width: 200
-      height: 166
+      height: 170
     ID: 5
     outPlayerIndex: -1
     outActionIndex: -1
-    more: 1
-    ovrStartNode: 0
-    renameDialogue: MrCube
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: Model
+    methodName: Roar
+    nameIndex: 1
+    methodIndex: 7
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - Jump
+    - FinishJump
+    - Attack
+    - Run
+    - Idle
+    - Defeated
+    - Roar
+    - EndAnimation
+    - Landing
+    - ChangeModel
+    - EnableCollider
+    - DisableCollider
+    nameOpts:
+    - '[No object]'
+    - Model
+    - katana-v1
+    - SoulController
+    - UIMANAGER
+    - HeartContainers
+    - EndGame
+    - HeartHolder
+    - kaori-pelo-run-v3
+    - Pause
+    - Inventory
+    - LifeController
+    - BossDialogueEntrance
+    - MainMenu
+    - BossEntrance
+    - Boss
+    - Player
+    - Main Camera
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 1650
+      y: 150
+      width: 200
+      height: 170
+    ID: 2
+    outPlayerIndex: 4
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 1
+    gameObjectName: Model
+    methodName: Roar
+    nameIndex: 1
+    methodIndex: 7
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - Jump
+    - FinishJump
+    - Attack
+    - Run
+    - Idle
+    - Defeated
+    - Roar
+    - EndAnimation
+    - Landing
+    - ChangeModel
+    - EnableCollider
+    - DisableCollider
+    - ReproduceSound
+    - ReproduceSoundWithLoop
+    - StopSound
+    nameOpts:
+    - '[No object]'
+    - Model
+    - UIMANAGER
+    - EndGame
+    - BossDialogueEntrance
+    - BossEntrance
+    - Boss
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 480
+      y: 350
+      width: 200
+      height: 170
+    ID: 8
+    outPlayerIndex: -1
+    outActionIndex: 3
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: BossEntrance
+    methodName: StartFight
+    nameIndex: 5
+    methodIndex: 1
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartFight
+    nameOpts:
+    - '[No object]'
+    - Model
+    - UIMANAGER
+    - EndGame
+    - BossDialogueEntrance
+    - BossEntrance
+    - Boss
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 730
+      y: 350
+      width: 200
+      height: 170
+    ID: 9
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
   S_selNodes: []

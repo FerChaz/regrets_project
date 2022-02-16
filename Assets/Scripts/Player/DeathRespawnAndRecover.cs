@@ -18,11 +18,13 @@ public class DeathRespawnAndRecover : MonoBehaviour
     public LimboController limboController;
     public Checkpoint checkpoint;
     public RespawnController respawnController;
+    public PlayerJump playerJump;
 
     private int _totalSoulsToRecover;
 
     public bool isFirstDead;
     public Vector3 deathPosition;
+    public float initialForceJump;
 
     public LimboInfo limboInfo;
 
@@ -34,15 +36,19 @@ public class DeathRespawnAndRecover : MonoBehaviour
         limboController = FindObjectOfType<LimboController>();
         respawnController = FindObjectOfType<RespawnController>();
         recover = FindObjectOfType<RecoverSoulsController>();
+        playerJump = GetComponent<PlayerJump>();
     }
 
     private void Start()
     {
         isFirstDead = true;
+        initialForceJump = playerJump.jumpVelocity;
     }
 
     public void Death()
     {
+        playerJump.jumpVelocity = initialForceJump;
+
         if (isFirstDead)
         {
             deathPosition = playerController.lastPositionInGround;

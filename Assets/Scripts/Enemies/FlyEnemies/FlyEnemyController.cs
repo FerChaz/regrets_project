@@ -18,6 +18,7 @@ public class FlyEnemyController : MonoBehaviour
     public GameObject model;
     public Color initColorMaterial;
     public Material material;
+    public ParticleSystem fallenParticleEffect;
     //public Animator animator;
 
     [Header("Ground Check Variables")]
@@ -123,6 +124,17 @@ public class FlyEnemyController : MonoBehaviour
         audioControlerEnemy.Death_Enemy();
         audioSource.Play();
     }
+
+    public void StartFallenEfect()
+    {
+        fallenParticleEffect.Play();
+    }
+
+    public void StopFallenEffect()
+    {
+        fallenParticleEffect.Stop();
+    }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

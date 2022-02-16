@@ -1933,8 +1933,10 @@ MonoBehaviour:
   limboController: {fileID: 0}
   checkpoint: {fileID: 0}
   respawnController: {fileID: 0}
+  playerJump: {fileID: 0}
   isFirstDead: 0
   deathPosition: {x: 0, y: 0, z: 0}
+  initialForceJump: 0
   limboInfo: {fileID: 11400000, guid: 4ca05c4432d5c7c4fb7410f830c269c0, type: 2}
 --- !u!114 &306033099
 MonoBehaviour:
@@ -14738,7 +14740,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1042956535}
   - component: {fileID: 1042956534}
-  - component: {fileID: 1042956533}
   - component: {fileID: 1042956532}
   - component: {fileID: 1042956531}
   m_Layer: 0
@@ -14780,18 +14781,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
---- !u!114 &1042956533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042956530}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b95702a242504a48b930af805a8eb9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1042956534
 BoxCollider:
   m_ObjectHideFlags: 0

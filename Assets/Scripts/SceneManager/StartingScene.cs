@@ -52,15 +52,16 @@ public class StartingScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (eventHappened.eventAlreadyHappened)
+            diagUI.Interact(dialogue);
+            /*if (eventHappened.eventAlreadyHappened)
             {
                 this.gameObject.SetActive(false);
                 return;
             }
             else
             {
-                diagUI.Interact(dialogue);
-            }
+                
+            }*/
         }
     }
 

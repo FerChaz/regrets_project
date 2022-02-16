@@ -15,4 +15,4 @@ MonoBehaviour:
   isWallBroken: 0
   isChestOpen: 0
   isDoorOpen: 0
-  eventAlreadyHappened: 0
+  eventAlreadyHappened: 1

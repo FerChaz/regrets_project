@@ -17,6 +17,7 @@ public class GroundEnemyPatrolController : MonoBehaviour
     public Animator _animator;
     public Color initColorMaterial;
     public Material material;
+    public ParticleSystem fallenParticleEffect;
 
     [Header("Ground Check Variables")]
     [SerializeField] private Transform _groundCheck;
@@ -113,6 +114,16 @@ public class GroundEnemyPatrolController : MonoBehaviour
         audioSource.clip = ejecucion;
         audioControlerEnemy.Death_Enemy();
         audioSource.Play();
+    }
+
+    public void StartFallenEfect()
+    {
+        fallenParticleEffect.Play();
+    }
+
+    public void StopFallenEffect()
+    {
+        fallenParticleEffect.Stop();
     }
 
 #if UNITY_EDITOR

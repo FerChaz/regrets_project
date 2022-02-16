@@ -22,6 +22,7 @@ public class FallenGroundEnemyState : State
         if (_enemyController != null)
         {
             _enemyController.material.SetColor(MAINCOLOR, Color.black);
+            _enemyController.StartFallenEfect();
 
             _enemyController._animator.SetBool("walk", false);
             _enemyController.isAnyStateRunning = true;
@@ -57,6 +58,7 @@ public class FallenGroundEnemyState : State
     public override void ExitState()
     {
         _enemyController.material.SetColor(MAINCOLOR, _enemyController.initColorMaterial);
+        _enemyController.StopFallenEffect();
 
         _enemyController.isFall = false;
         _enemyController.canvas.SetActive(false);

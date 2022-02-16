@@ -25,6 +25,20 @@ public class BossAnimatorController : MonoBehaviour
     public AudioClip[] audioList;
     public AudioSource audioSource;
 
+
+    /*  Boss sound list: 
+     *                      Pos[0] = Boss Roll
+                            Pos[1] = Boss Jump
+                            Pos[2] = Boss Punch
+                            Pos[3] = Boss Roar
+    */
+
+    private int bossRoll = 0;
+    private int bossJump = 1;
+    private int bossPunch = 2;
+    private int bossRoar = 3;
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -70,7 +84,8 @@ public class BossAnimatorController : MonoBehaviour
     public void Roar()
     {
         animator.SetTrigger(ROAR);
-        audioSource.clip = audioList[0];
+        audioSource.loop = false;
+        audioSource.clip = audioList[bossRoar];
         audioSource.Play();
     }
 
@@ -111,5 +126,25 @@ public class BossAnimatorController : MonoBehaviour
     public void DisableCollider()
     {
         colliderPunch.enabled = false;
+    }
+
+    public void ReproduceSound(int soundIndex)
+    {
+        audioSource.loop = false;
+        audioSource.clip = audioList[soundIndex];
+        audioSource.Play();
+    }
+
+    public void ReproduceSoundWithLoop(int soundIndex)
+    {
+        audioSource.loop = true;
+        audioSource.clip = audioList[soundIndex];
+        audioSource.Play();
+    }
+
+    public void StopSound()
+    {
+        audioSource.loop = false;
+        audioSource.Stop();
     }
 }

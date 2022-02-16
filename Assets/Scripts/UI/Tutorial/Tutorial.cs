@@ -15,6 +15,8 @@ public class Tutorial : MonoBehaviour
     public ParticleSystem effect;
     public GameObject model;
 
+    public StartingScene startingSceneController;
+
     private void Awake()
     {
         if (eventHappened.eventAlreadyHappened)
@@ -23,6 +25,7 @@ public class Tutorial : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
+        startingSceneController = FindObjectOfType<StartingScene>();
     }
 
     private void OnTriggerExit(Collider other)
@@ -35,6 +38,7 @@ public class Tutorial : MonoBehaviour
     {
         eventHappened.eventAlreadyHappened = true;
         canvas.SetActive(true);
+        
         Disapear();
         // FADE IN
     }
@@ -64,6 +68,7 @@ public class Tutorial : MonoBehaviour
         model.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         effect.Stop();
+        startingSceneController.gameObject.SetActive(false);
     }
 
 }

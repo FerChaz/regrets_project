@@ -61,6 +61,7 @@ public class LifeController : MonoBehaviour
     private void Start()
     {
         currentLife.initialValue = maxLife;
+        heartContainers.initialValue = 4;
         _scale = model.transform.localScale;
     }
 

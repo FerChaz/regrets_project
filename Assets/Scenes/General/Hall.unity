@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19812,8 +19812,10 @@ MonoBehaviour:
   limboController: {fileID: 0}
   checkpoint: {fileID: 0}
   respawnController: {fileID: 0}
+  playerJump: {fileID: 0}
   isFirstDead: 0
   deathPosition: {x: 0, y: 0, z: 0}
+  initialForceJump: 0
   limboInfo: {fileID: 11400000, guid: 4ca05c4432d5c7c4fb7410f830c269c0, type: 2}
 --- !u!114 &464233201
 MonoBehaviour:
@@ -66966,7 +66968,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   topTime: 1
   direction: -1
-  musicIndex: 2
+  musicIndex: 1
 --- !u!1001 &1483307223
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,11 +12,14 @@ public class PlayerEntranceInBoss : MonoBehaviour
     
     public BossController bossController;
 
+    public PlayerJump playerJump;
+
     private void Awake()
     {
         entranceCollider = GetComponent<BoxCollider>();
         mainCamera = FindObjectOfType<MainCamera>().gameObject;
         bossController = FindObjectOfType<BossController>();
+        playerJump = FindObjectOfType<PlayerJump>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +35,8 @@ public class PlayerEntranceInBoss : MonoBehaviour
     {
         bossCamera.SetActive(true);
         mainCamera.SetActive(false);
+
+        playerJump.jumpVelocity = 40.0f;
 
         bossController.Entrance();
 

@@ -6,6 +6,8 @@ using VIDE_Data;
 public class BossEntrance : MonoBehaviour
 {
     public BossController bossController;
+    public SceneController sceneController;
+    public int musicIndex;
 
     //Reference To Player
     public PlayerController player;
@@ -20,6 +22,7 @@ public class BossEntrance : MonoBehaviour
 
     private void Awake()
     {
+        sceneController = FindObjectOfType<SceneController>();
         player = FindObjectOfType<PlayerController>();
     }
 
@@ -51,5 +54,6 @@ public class BossEntrance : MonoBehaviour
     {
         bossController.isEntranceStateRunning = false;
         this.gameObject.SetActive(false);
+        sceneController.StartMusic(musicIndex);
     }
 }

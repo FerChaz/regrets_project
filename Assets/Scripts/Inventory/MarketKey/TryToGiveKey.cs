@@ -16,6 +16,9 @@ public class TryToGiveKey : MonoBehaviour
 
     public GiveExtraLife extraLife;
 
+    public GameObject firstDialogueToDisable;
+    public GameObject giveKeyCanvas;
+
     private void Awake()
     {
         playerInventory = FindObjectOfType<PlayerInventoryController>();
@@ -57,6 +60,8 @@ public class TryToGiveKey : MonoBehaviour
     public void DisableFirstConversation()
     {
         firstConversation.eventAlreadyHappened = true;
+        firstDialogueToDisable.SetActive(false);
+        giveKeyCanvas.SetActive(true);
     }
 
     public void ChangePlayerCanMove(bool can)
