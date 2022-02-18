@@ -33,14 +33,16 @@ public class Tutorial : MonoBehaviour
         UnShow();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Show();
+    }
 
     public void Show()
     {
         eventHappened.eventAlreadyHappened = true;
         canvas.SetActive(true);
-        
-        Disapear();
-        // FADE IN
+
     }
 
     public void UnShow()
@@ -54,21 +56,4 @@ public class Tutorial : MonoBehaviour
     {
         playerController.CanDoAnyMovement(enabled);
     }
-
-    public void Disapear()
-    {
-        effect.Play();
-        
-        StartCoroutine(FinishEffect());
-    }
-
-    IEnumerator FinishEffect()
-    {
-        yield return new WaitForSeconds(0.5f);
-        model.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        effect.Stop();
-        startingSceneController.gameObject.SetActive(false);
-    }
-
 }

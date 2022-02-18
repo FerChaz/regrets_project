@@ -1637,8 +1637,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303352496}
-  - component: {fileID: 303352495}
   - component: {fileID: 303352494}
+  - component: {fileID: 303352495}
   m_Layer: 0
   m_Name: TutorialMove
   m_TagString: Untagged
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 303352493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f28114866f5b2488c114f4d040c29f, type: 3}
+  m_Script: {fileID: 11500000, guid: 83ed72984b8dac14f8b77456eaa632f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1293987202}
@@ -1677,6 +1677,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   effect: {fileID: 385681181}
   model: {fileID: 216576085}
+  startingSceneController: {fileID: 0}
 --- !u!4 &303352496
 Transform:
   m_ObjectHideFlags: 0
