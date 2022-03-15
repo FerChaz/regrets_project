@@ -1,129 +1,159 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using scripts.sceneManager.sceneController;
 
-public class Checkpoint : MonoBehaviour
+namespace scripts.checkpoint.checkpoint
 {
-    public List<string> scenesToChargeInAdditive;
-    public string checkpointSceneName;
-
-    public RespawnInfo respawnInfo;
-    public AdditiveScenesInfo additiveScenesScriptableObject;
-    public SaveController saveController;
-
-    public GameObject objectsToActivate;
-    public List<GameObject> entrancesToDisable;
-
-    private LifeController _lifeController;
-    private SceneController _sceneController;
-    private ParticleSystem _particle;
-
-    [Header("Canvas")]
-    public GameObject canvas;
-
-    [Header("Transition Canvas")]
-    public GameObject transitionCanvas;
-    public Animator canvasAnimator;
-
-    private WaitForSeconds wait = new WaitForSeconds(.5f);
-
-    private void Awake()
+    public class Checkpoint : MonoBehaviour
     {
-        saveController = FindObjectOfType<SaveController>();
-        _lifeController = FindObjectOfType<LifeController>();
-        _sceneController = FindObjectOfType<SceneController>();
+        #region Variables
 
-        _particle = GetComponentInChildren<ParticleSystem>();
+        public List<string> scenesToChargeInAdditive;
+        public string checkpointSceneName;
 
-        transitionCanvas = GameObject.Find("TransitionCanvas");
-        canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
-    }
+        public RespawnInfo respawnInfo;
+        public AdditiveScenesInfo additiveScenesScriptableObject;
+        public SaveController saveController;
 
+        public GameObject objectsToActivate;
+        public List<GameObject> entrancesToDisable;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private LifeController _lifeController;
+        private SceneController _sceneController;
+        private ParticleSystem _particle;
+
+        [Header("Canvas")]
+        public GameObject canvas;
+
+        [Header("Transition Canvas")]
+        public GameObject transitionCanvas;
+        public Animator canvasAnimator;
+
+        private WaitForSeconds wait = new WaitForSeconds(.5f);
+
+        #endregion
+
+        #region Awake & Start
+
+        private void Awake()
         {
-            if (respawnInfo.isRespawning)
+            saveController = FindObjectOfType<SaveController>();
+            _lifeController = FindObjectOfType<LifeController>();
+            _sceneController = FindObjectOfType<SceneController>();
+
+            _particle = GetComponentInChildren<ParticleSystem>();
+
+            transitionCanvas = GameObject.Find("TransitionCanvas");
+            canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
+        }
+
+        #endregion
+
+        #region OnTriggerEnter || OnTriggerExit
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
             {
-                respawnInfo.isRespawning = false;
-                Revive();
-            }
-            else
-            {
-                canvas.SetActive(true);
+                if (respawnInfo.isRespawning)
+                {
+                    respawnInfo.isRespawning = false;
+                    Revive();
+                }
+                else
+                {
+                    canvas.SetActive(true);
+                }
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                canvas.SetActive(false);
+                _particle.Stop();
+            }
+        }
+
+        #endregion
+
+        #region Active Checkpoint
+
+        public void Pray()                                                  // Active Checkpoint
         {
             canvas.SetActive(false);
-            _particle.Stop();
+
+            _lifeController.RestoreMaxLife();
+            respawnInfo.respawnPosition = transform.position;
+            respawnInfo.sceneToRespawn = checkpointSceneName;
+            respawnInfo.additiveScenesToCharge = scenesToChargeInAdditive;
+            respawnInfo.checkpointActivename = gameObject.name;
+
+            //saveController.SaveData();
+
+            _particle.Play();
         }
-    }
 
+        #endregion
 
-    public void Pray()
-    {
-        canvas.SetActive(false);
+        #region Revive
 
-        _lifeController.RestoreMaxLife();
-        respawnInfo.respawnPosition = transform.position;
-        respawnInfo.sceneToRespawn = checkpointSceneName;
-        respawnInfo.additiveScenesToCharge = scenesToChargeInAdditive;
-        respawnInfo.checkpointActivename = gameObject.name;
-
-        //saveController.SaveData();
-
-        _particle.Play();
-    }
-
-    public void Revive()
-    {
-        canvas.SetActive(false);
-        _particle.Play();
-
-        _lifeController.RestoreMaxLife();
-
-        objectsToActivate.SetActive(true);                      // Enable enemies
-
-        foreach (GameObject entrance in entrancesToDisable)
+        public void Revive()
         {
-            entrance.SetActive(false);                          // Disable other entrances
+            canvas.SetActive(false);
+            _particle.Play();
+
+            _lifeController.RestoreMaxLife();
+
+            objectsToActivate.SetActive(true);                      // Enable enemies
+
+            foreach (GameObject entrance in entrancesToDisable)
+            {
+                entrance.SetActive(false);                          // Disable other entrances
+            }
+
+            foreach (string scene in scenesToChargeInAdditive)
+            {
+                _sceneController.LoadSceneInAdditive(scene, OnSceneComplete);
+            }
+
+            additiveScenesScriptableObject.actualScene = checkpointSceneName;
+            additiveScenesScriptableObject.additiveScenes = scenesToChargeInAdditive;
+
+            //saveController.SaveData();
+
+            //StartCoroutine(WaitForFade());
         }
 
-        foreach (string scene in scenesToChargeInAdditive)
+        #endregion
+
+        #region CanvasTransition
+
+        private void CanvasTransition()
         {
-            _sceneController.LoadSceneInAdditive(scene, OnSceneComplete);
+            // De negro a transparente
+            canvasAnimator.SetBool("ToBlack", false);
         }
 
-        additiveScenesScriptableObject.actualScene = checkpointSceneName;
-        additiveScenesScriptableObject.additiveScenes = scenesToChargeInAdditive;
+        private IEnumerator WaitForFade()
+        {
+            yield return wait;
+            CanvasTransition();
+        }
 
-        //saveController.SaveData();
+        #endregion
 
-        //StartCoroutine(WaitForFade());
-    }
+        #region OnSceneComplete
 
-    private void CanvasTransition()
-    {
-        // De negro a transparente
-        canvasAnimator.SetBool("ToBlack", false);
-    }
+        private void OnSceneComplete()
+        {
+            Debug.Log($"OnScene async complete {gameObject.name}");
+        }
 
-    private IEnumerator WaitForFade()
-    {
-        yield return wait;
-        CanvasTransition();
-    }
+        #endregion
 
-
-    private void OnSceneComplete()
-    {
-        Debug.Log($"OnScene async complete {gameObject.name}");
     }
 
 }

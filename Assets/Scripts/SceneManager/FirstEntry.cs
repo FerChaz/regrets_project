@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class FirstEntry : MonoBehaviour
 {
-    public SceneController _sceneManager;
-
-    public List<string> additiveScenes;
-    public string actualScene;
-
-    public AdditiveScenesInfo sceneInfo;
+    #region Variables
 
     public GameObject transitionCanvas;
     public Animator canvasAnimator;
 
     private WaitForSeconds wait = new WaitForSeconds(.5f);
 
+    #endregion
+
+    #region Awake & Start
+
     private void Awake()
     {
-        _sceneManager = FindObjectOfType<SceneController>();
         transitionCanvas = GameObject.Find("TransitionCanvas");
         canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
     }
+
+    #endregion
+
+    #region Init Canvas Transition
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            sceneInfo.additiveScenes = additiveScenes;
-            sceneInfo.actualScene = actualScene;
-
-            _sceneManager.LoadSceneInAdditive(additiveScenes[0], OnSceneComplete);
-
             StartCoroutine(WaitForFade());
         }
     }
 
+    #endregion
+
+    #region CanvasTransition
 
     private void CanvasTransition()
     {
@@ -53,11 +53,6 @@ public class FirstEntry : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-
-    private void OnSceneComplete()
-    {
-        Debug.Log($"OnScene async complete, {gameObject.name}");
-    }
-
+    #endregion
 
 }

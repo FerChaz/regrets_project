@@ -4,74 +4,93 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-
-public class SceneController : MonoBehaviour
+namespace scripts.sceneManager.sceneController
 {
-    [Header("DontDestroyOnLoad")]
-    public GameObject player;
-    public GameObject mainCamera;                                                           // Para establecer los límites
-
-    [Header("Music List")]
-    public AudioClip[] musicList;
-    private AudioSource musicSource;
-
-    private UnityAction _onTaskComplete;
-
-    private void Awake()
+    public class SceneController : MonoBehaviour
     {
-        player = FindObjectOfType<PlayerController>().gameObject;
-        mainCamera = FindObjectOfType<MainCamera>().gameObject;
+        #region Variables
 
-        musicSource = GetComponent<AudioSource>();
-    }
+        [Header("Player")]
+        public GameObject player;
 
-    public void ChangePlayerPosition(Vector3 positionToGo)
-    {
-        player.transform.position = positionToGo;
-    }
+        [Header("Music List")]
+        public AudioClip[] musicList;
+        private AudioSource musicSource;
 
-    public void LoadSceneInAdditive(string sceneToLoad, UnityAction callback)
-    {
-        _onTaskComplete = callback;
-        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
-        asyncOp.completed += OnAsyncOpCompleted;
-    }
+        private UnityAction _onTaskComplete;
 
+        #endregion
 
-    public void UnloadSceneInAdditive(string sceneToUnload, UnityAction callback)
-    {
-        _onTaskComplete = callback;
-        AsyncOperation asyncOp = SceneManager.UnloadSceneAsync(sceneToUnload);
-        asyncOp.completed += OnAsyncOpCompleted;
-    }
+        #region Awake & Start
 
-
-
-    private void OnAsyncOpCompleted(AsyncOperation obj)
-    {
-        _onTaskComplete?.Invoke();
-    }
-
-
-    //-- MUSIC CONTROLLER ----------------------------------------------------------------
-
-    public void StartMusic(int musicIndex)
-    {
-        if (musicIndex > musicList.Length || musicIndex < 0)
+        private void Awake()
         {
-            return;
+            player = FindObjectOfType<PlayerController>().gameObject;
+            musicSource = GetComponent<AudioSource>();
         }
 
-        musicSource.clip = musicList[musicIndex];
-        musicSource.Play();
-    }
+        #endregion
 
-    public void StopMusic(bool needToStop)
-    {
-        if (needToStop)
+        #region ChangePlayerPosition
+
+        public void ChangePlayerPosition(Vector3 positionToGo)
         {
-            musicSource.Stop();
+            player.transform.position = positionToGo;
         }
+
+        #endregion
+
+        #region Load & Unload Scenes
+
+        public void LoadSceneInAdditive(string sceneToLoad, UnityAction callback)
+        {
+            _onTaskComplete = callback;
+            AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+            asyncOp.completed += OnAsyncOpCompleted;
+        }
+
+
+        public void UnloadSceneInAdditive(string sceneToUnload, UnityAction callback)
+        {
+            _onTaskComplete = callback;
+            AsyncOperation asyncOp = SceneManager.UnloadSceneAsync(sceneToUnload);
+            asyncOp.completed += OnAsyncOpCompleted;
+        }
+
+        #endregion
+
+        #region MusicController
+
+        public void StartMusic(int musicIndex)
+        {
+            if (musicIndex > musicList.Length || musicIndex < 0)
+            {
+                return;
+            }
+
+            musicSource.clip = musicList[musicIndex];
+            musicSource.Play();
+        }
+
+        public void StopMusic(bool needToStop)
+        {
+            if (needToStop)
+            {
+                musicSource.Stop();
+            }
+        }
+
+        #endregion
+
+        #region UnityAction
+
+        private void OnAsyncOpCompleted(AsyncOperation obj)
+        {
+            _onTaskComplete?.Invoke();
+        }
+
+        #endregion
+
     }
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioRecibeDañoPlayer : MonoBehaviour
+public class DamagePlayerAudio : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip reciveDamange;

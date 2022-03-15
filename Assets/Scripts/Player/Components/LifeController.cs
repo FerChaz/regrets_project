@@ -25,7 +25,6 @@ public class LifeController : MonoBehaviour
 
     [Header("Player Scripts")]
     public PlayerController playerController;
-    public SoulController soulsController;
     public PlayerKnockback knockbackController;
 
     [Header("Fade")]
@@ -41,7 +40,7 @@ public class LifeController : MonoBehaviour
     public GameObject lowLifeCanvas;
 
     [Header("Script Sonido Daño y muerte ")]
-    public AudioRecibeDañoPlayer recibeDañoPlayer;
+    public DamagePlayerAudio damagePlayerAudio;
 
     public GameObject lifeContainer;
     public IntValue heartContainers;
@@ -54,8 +53,7 @@ public class LifeController : MonoBehaviour
         colliderLifeManager = GetComponent<BoxCollider>();
         playerController = GetComponentInParent<PlayerController>();
         knockbackController = GetComponentInParent<PlayerKnockback>();
-        soulsController = FindObjectOfType<SoulController>();
-        recibeDañoPlayer = GetComponent<AudioRecibeDañoPlayer>();
+        damagePlayerAudio = GetComponent<DamagePlayerAudio>();
     }
 
     private void Start()
@@ -110,7 +108,7 @@ public class LifeController : MonoBehaviour
 
             if (currentLife.initialValue > 0)
             {
-                recibeDañoPlayer.AudioDañoPlayer();       //   Reproduce el sonido de daño
+                damagePlayerAudio.AudioDañoPlayer();       //   Reproduce el sonido de daño
                 knockbackController.KnockBackGetFromSpikes(direction);
 
                 if (currentLife.initialValue == 1)
@@ -132,7 +130,7 @@ public class LifeController : MonoBehaviour
 
             if (currentLife.initialValue > 0)
             {
-                recibeDañoPlayer.AudioDañoPlayer();       //   Reproduce el sonido de daño
+                damagePlayerAudio.AudioDañoPlayer();       //   Reproduce el sonido de daño
                 playerHealthSignal.Raise(); // CHANGE UI
                 knockbackController.KnockBackGetFromEnemy(direction);
 
@@ -153,7 +151,7 @@ public class LifeController : MonoBehaviour
 
     private void Death()
     {
-        recibeDañoPlayer.AudioMuertePlayer();//Reproduce Audio Muerte
+        damagePlayerAudio.AudioMuertePlayer();//Reproduce Audio Muerte
         knockbackController.DeathKnockBack();
         playerController.Death();
         currentLife.initialValue = maxLife;

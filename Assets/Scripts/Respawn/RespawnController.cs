@@ -1,80 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using scripts.sceneManager.sceneController;
+using scripts.checkpoint.checkpoint;
 
-public class RespawnController : MonoBehaviour
+namespace scripts.respawn.respawnController
 {
-
-    public SceneController sceneController;
-
-    public Checkpoint checkpoint;
-
-    public RespawnInfo respawnInfo;
-    public AdditiveScenesInfo additiveScenesInfo;
-    public GameObject checkpointObject;
-
-    public GameObject transitionCanvas;
-    public Animator canvasAnimator;
-
-    private WaitForSeconds waitFade = new WaitForSeconds(.5f);
-    private WaitForSeconds wait = new WaitForSeconds(1);
-
-    private void Awake()
+    public class RespawnController : MonoBehaviour
     {
-        sceneController = FindObjectOfType<SceneController>();
-        transitionCanvas = GameObject.Find("TransitionCanvas");
-        canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
-    }
+        #region Variables
 
-    public void Respawn()
-    {        
-        CanvasTransition();
+        public SceneController sceneController;
 
-        StartCoroutine(WaitForFade());
-    }
+        public Checkpoint checkpoint;
 
-    private void CanvasTransition()
-    {
-        // De transparente a negro
+        public RespawnInfo respawnInfo;
+        public AdditiveScenesInfo additiveScenesInfo;
+        public GameObject checkpointObject;
 
-        canvasAnimator.SetBool("ToBlack", true);
-    }
+        public GameObject transitionCanvas;
+        public Animator canvasAnimator;
 
-    private IEnumerator WaitForFade()
-    {
-        yield return waitFade;
+        private WaitForSeconds waitFade = new WaitForSeconds(.5f);
+        private WaitForSeconds wait = new WaitForSeconds(1);
 
-        sceneController.ChangePlayerPosition(Vector3.zero);
+        #endregion
 
-        sceneController.UnloadSceneInAdditive(additiveScenesInfo.actualScene, OnSceneComplete);
+        #region Awake & Start
 
-        foreach (string scene in additiveScenesInfo.additiveScenes)
+        private void Awake()
         {
-            if (scene != additiveScenesInfo.actualScene)
-            {
-                sceneController.UnloadSceneInAdditive(scene, OnSceneComplete);
-            }
+            sceneController = FindObjectOfType<SceneController>();
+            transitionCanvas = GameObject.Find("TransitionCanvas");
+            canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
         }
 
-        sceneController.LoadSceneInAdditive(respawnInfo.sceneToRespawn, OnSceneComplete);
-        respawnInfo.isRespawning = true;
+        #endregion
 
-        StartCoroutine(WaitToChange());
+        #region Respawn
 
-    }
+        public void Respawn()
+        {
+            CanvasTransition();
 
+            StartCoroutine(WaitForFade());
+        }
 
-    IEnumerator WaitToChange()
-    {
-        yield return wait;
-        sceneController.ChangePlayerPosition(respawnInfo.respawnPosition);
-        canvasAnimator.SetBool("ToBlack", false);
-    }
+        private IEnumerator WaitForFade()
+        {
+            yield return waitFade;
 
+            sceneController.ChangePlayerPosition(Vector3.zero);
 
-    private void OnSceneComplete()
-    {
-        Debug.Log($"OnScene async complete, {gameObject.name}");
+            sceneController.UnloadSceneInAdditive(additiveScenesInfo.actualScene, OnSceneComplete);
+
+            foreach (string scene in additiveScenesInfo.additiveScenes)
+            {
+                if (scene != additiveScenesInfo.actualScene)
+                {
+                    sceneController.UnloadSceneInAdditive(scene, OnSceneComplete);
+                }
+            }
+
+            sceneController.LoadSceneInAdditive(respawnInfo.sceneToRespawn, OnSceneComplete);
+            respawnInfo.isRespawning = true;
+
+            StartCoroutine(WaitToChange());
+
+        }
+
+        IEnumerator WaitToChange()
+        {
+            yield return wait;
+            sceneController.ChangePlayerPosition(respawnInfo.respawnPosition);
+            canvasAnimator.SetBool("ToBlack", false);
+        }
+
+        #endregion
+
+        #region CanvasTransition
+
+        private void CanvasTransition()
+        {
+            // De transparente a negro
+
+            canvasAnimator.SetBool("ToBlack", true);
+        }
+
+        #endregion
+
+        #region OnSceneComplete
+
+        private void OnSceneComplete()
+        {
+            Debug.Log($"OnScene async complete, {gameObject.name}");
+        }
+
+        #endregion
+
     }
 
 }

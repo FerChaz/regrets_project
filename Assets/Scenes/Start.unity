@@ -431,13 +431,12 @@ MonoBehaviour:
   model: {fileID: 5237115494077028685}
   playerHealthSignal: {fileID: 11400000, guid: 36a3af5f6fe30f14591bdf25c8015f35, type: 2}
   playerController: {fileID: 1537300089}
-  soulsController: {fileID: 0}
   knockbackController: {fileID: 0}
   deathFade: {fileID: 802890515}
   soulsToRecover: {fileID: 11400000, guid: 0d55266bc5806974a9620bf273e65772, type: 2}
   modelToShow: {fileID: 0}
   lowLifeCanvas: {fileID: 1768610486}
-  "recibeDa\xF1oPlayer": {fileID: 0}
+  damagePlayerAudio: {fileID: 0}
   lifeContainer: {fileID: 1770386695}
   heartContainers: {fileID: 11400000, guid: d3ac2d6320afdf74da0660b25333f2b5, type: 2}
 --- !u!82 &127244584
@@ -2264,8 +2263,11 @@ MonoBehaviour:
   sceneManager: {fileID: 870034255}
   loadingCanvas: {fileID: 858599384}
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
+  sceneInfo: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
   initialPosition: {x: -485, y: 7.95, z: 0}
   initialScene: House
+  additiveScenes:
+  - Intro
   playerAnimator: {fileID: 1514903493648472461}
   dialogue: {fileID: 1623151282}
   diagUI: {fileID: 401197553}
@@ -3117,7 +3119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1537300084}
-  mainCamera: {fileID: 499729786}
   musicList:
   - {fileID: 8300000, guid: dbd821ef8586b7e409dee70dbe07f349, type: 3}
   - {fileID: 8300000, guid: 37be460e83269c440b840aec38905363, type: 3}
@@ -14515,8 +14516,6 @@ MonoBehaviour:
   canChangeGravity: 1
   mainCamera: {fileID: 0}
   multiplierX: 3
-  bridgePlayerAnimator: {fileID: 0}
-  bridgePlayerAudio: {fileID: 0}
 --- !u!54 &1537300090
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14586,11 +14585,8 @@ MonoBehaviour:
   soulRecoveryData: {fileID: 11400000, guid: 0d55266bc5806974a9620bf273e65772, type: 2}
   additiveSceneInfo: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
   recover: {fileID: 0}
-  sceneController: {fileID: 0}
-  playerController: {fileID: 0}
   soulsController: {fileID: 0}
   limboController: {fileID: 0}
-  checkpoint: {fileID: 0}
   respawnController: {fileID: 0}
   playerJump: {fileID: 0}
   isFirstDead: 0
@@ -18751,7 +18747,6 @@ MonoBehaviour:
   comboPossible: 0
   doCombo: 0
   katana: {fileID: 0}
-  player: {fileID: 0}
   weapon: {fileID: 3928635820296684815}
   weaponParticle: {fileID: 1051218132}
 --- !u!82 &5237115494077028688

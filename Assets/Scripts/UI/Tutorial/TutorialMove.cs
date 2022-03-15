@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using scripts.sceneManager.startingScene;
 
 public class TutorialMove : MonoBehaviour
 {

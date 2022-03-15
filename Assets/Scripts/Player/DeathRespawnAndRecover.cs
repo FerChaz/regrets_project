@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using scripts.respawn.respawnController;
+using scripts.limbo.limboController;
 
 public class DeathRespawnAndRecover : MonoBehaviour
 {
@@ -12,11 +14,8 @@ public class DeathRespawnAndRecover : MonoBehaviour
     public RecoverSoulsController recover;
 
     [Header("Controllers")]
-    public SceneController sceneController;
-    public PlayerController playerController;
     public SoulController soulsController;
     public LimboController limboController;
-    public Checkpoint checkpoint;
     public RespawnController respawnController;
     public PlayerJump playerJump;
 
@@ -30,9 +29,7 @@ public class DeathRespawnAndRecover : MonoBehaviour
 
     private void Awake()
     {
-        playerController = GetComponent<PlayerController>();
         soulsController = GetComponentInChildren<SoulController>();
-        sceneController = FindObjectOfType<SceneController>();
         limboController = FindObjectOfType<LimboController>();
         respawnController = FindObjectOfType<RespawnController>();
         recover = FindObjectOfType<RecoverSoulsController>();
@@ -45,13 +42,13 @@ public class DeathRespawnAndRecover : MonoBehaviour
         initialForceJump = playerJump.jumpVelocity;
     }
 
-    public void Death()
+    public void Death(Vector3 playerLastPositionInGround)
     {
         playerJump.jumpVelocity = initialForceJump;
 
         if (isFirstDead)
         {
-            deathPosition = playerController.lastPositionInGround;
+            deathPosition = playerLastPositionInGround;
             isFirstDead = false;
             limboInfo.deathScene = additiveSceneInfo.actualScene;
             limboInfo.isPlayerInLimbo = true;
@@ -62,7 +59,7 @@ public class DeathRespawnAndRecover : MonoBehaviour
         {
             if (!limboInfo.isPlayerInLimbo){
 
-                deathPosition = playerController.lastPositionInGround;
+                deathPosition = playerLastPositionInGround;
             }
 
             isFirstDead = true;

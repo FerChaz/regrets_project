@@ -1,124 +1,156 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using scripts.sceneManager.sceneController;
 
-public class EntryScene : MonoBehaviour
+namespace scripts.sceneManager.enterScene
 {
-    [Header("EnableAndDisableObjects")]
-    public GameObject activableObjects;
-    public List<GameObject> otherEntrances;
-
-    public SceneController _sceneManager;
-
-    public List<string> additiveScenes;
-    public string actualScene;
-
-    public AdditiveScenesInfo sceneInfo;
-
-    public GameObject transitionCanvas;
-    public Animator canvasAnimator;
-
-    private WaitForSeconds wait = new WaitForSeconds(.5f);
-
-    public PlayerController player;
-    public PlayerAnimatorController playerAnimator;
-    public float topTime = 1;
-    private Vector3 movement;
-    public float direction;
-    public int musicIndex;
-
-    private void Awake()
+    public class EntryScene : MonoBehaviour
     {
-        _sceneManager = FindObjectOfType<SceneController>();
-        transitionCanvas = GameObject.Find("TransitionCanvas");
-        canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
+        #region Variables
 
-        player = FindObjectOfType<PlayerController>();
-        playerAnimator = FindObjectOfType<PlayerAnimatorController>();
-    }
+        [Header("EnableAndDisableObjects")]
+        public GameObject activableObjects;
+        public List<GameObject> otherEntrances;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        public SceneController _sceneManager;
+
+        public List<string> additiveScenes;
+        public string actualScene;
+
+        public AdditiveScenesInfo sceneInfo;
+
+        public GameObject transitionCanvas;
+        public Animator canvasAnimator;
+
+        private WaitForSeconds wait = new WaitForSeconds(.5f);
+
+        public PlayerController player;
+        public PlayerAnimatorController playerAnimator;
+        public float topTime = 1;
+        private Vector3 movement;
+        public float direction;
+        public int musicIndex;
+
+        #endregion
+
+        #region Awake & Start
+
+        private void Awake()
         {
-            ActualiceSceneInfo();
+            _sceneManager = FindObjectOfType<SceneController>();
+            transitionCanvas = GameObject.Find("TransitionCanvas");
+            canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
 
-            activableObjects.SetActive(true);               // Enable enemies
+            player = FindObjectOfType<PlayerController>();
+            playerAnimator = FindObjectOfType<PlayerAnimatorController>();
+        }
 
-            for (int i = 0; i < otherEntrances.Count; i++)
+        #endregion
+
+        #region EnterPlayer
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
             {
-                otherEntrances[i].SetActive(false);         // Disable other entrances
+                ActualiceSceneInfo();
+
+                activableObjects.SetActive(true);               // Enable enemies
+
+                for (int i = 0; i < otherEntrances.Count; i++)
+                {
+                    otherEntrances[i].SetActive(false);         // Disable other entrances
+                }
+
+                foreach (string scene in additiveScenes)
+                {
+                    _sceneManager.LoadSceneInAdditive(scene, OnSceneComplete);
+                }
+
+                StartCoroutine(WaitForFade());
+                movement.Set(15f * direction, 0.0f, 0.0f);
+                StartCoroutine(Move());
+
+                _sceneManager.StartMusic(musicIndex);
+            }
+        }
+
+        private void ActualiceSceneInfo()
+        {
+            sceneInfo.additiveScenes = additiveScenes;
+            sceneInfo.actualScene = actualScene;
+        }
+
+        #endregion
+
+        #region CanvasTransition
+
+        private void CanvasTransition()
+        {
+            // De negro a transparente
+
+            canvasAnimator.SetBool("ToBlack", false);
+        }
+
+        private IEnumerator WaitForFade()
+        {
+            yield return wait;
+
+            CanvasTransition();
+        }
+
+        #endregion
+
+        #region EnterMovePlayer
+
+        IEnumerator Move()
+        {
+            player.CanDoAnyMovement(false);
+            float timer = 0;
+
+            player.useMovePlayerController = false;
+            if (direction >= 1)
+            {
+                player.playerModel.transform.eulerAngles = player.fixedPlayerRotation;
+            }
+            else
+            {
+                player.playerModel.transform.eulerAngles = player.fixedPlayerRotationBack;
             }
 
-            foreach (string scene in additiveScenes)
+            while (timer < topTime)
             {
-                _sceneManager.LoadSceneInAdditive(scene, OnSceneComplete);
+                playerAnimator.Run(direction);
+                player.rigidBody.velocity = movement;
+                timer += Time.deltaTime;
+                yield return null;
             }
 
-            StartCoroutine(WaitForFade());
-            movement.Set(15f * direction, 0.0f, 0.0f);
-            StartCoroutine(Move());
-
-            _sceneManager.StartMusic(musicIndex);
-        }
-    }
-
-    private void ActualiceSceneInfo()
-    {
-        sceneInfo.additiveScenes = additiveScenes;
-        sceneInfo.actualScene = actualScene;
-    }
-
-    private void CanvasTransition()
-    {
-        // De negro a transparente
-
-        canvasAnimator.SetBool("ToBlack", false);
-    }
-
-    private IEnumerator WaitForFade()
-    {
-        yield return wait;
-
-        CanvasTransition();
-    }
-
-    IEnumerator Move()
-    {
-        player.CanDoAnyMovement(false);
-        float timer = 0;
-        
-        player.useMovePlayerController = false;
-        if (direction >= 1)
-        {
-            player.playerModel.transform.eulerAngles = player.fixedPlayerRotation;
-        } else
-        {
-            player.playerModel.transform.eulerAngles = player.fixedPlayerRotationBack;
-        }
-        
-        while (timer < topTime)
-        {
-            playerAnimator.Run(direction);
-            player.rigidBody.velocity = movement;
-            timer += Time.deltaTime;
-            yield return null;
+            if (direction >= 1)
+            {
+                player.playerModel.transform.eulerAngles = player.playerRotation;
+            }
+            else
+            {
+                player.playerModel.transform.eulerAngles = player.playerRotationBack;
+            }
+            player.useMovePlayerController = true;
+            player.CanDoAnyMovement(true);
+            gameObject.SetActive(false);
         }
 
-        if (direction >= 1)
+        #endregion
+
+        #region OnSceneComplete
+
+        private void OnSceneComplete()
         {
-            player.playerModel.transform.eulerAngles = player.playerRotation;
-        } else
-        {
-            player.playerModel.transform.eulerAngles = player.playerRotationBack;
+            Debug.Log($"OnScene async complete, {gameObject.name}");
         }
-        player.useMovePlayerController = true;
-        player.CanDoAnyMovement(true);
-        gameObject.SetActive(false);
+
+        #endregion
+
     }
 
-    private void OnSceneComplete()
-    {
-        Debug.Log($"OnScene async complete, {gameObject.name}");
-    }
 }

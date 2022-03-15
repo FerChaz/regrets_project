@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //-- VARIABLES -----------------------------------------------------------------------------------------------------------------
+    #region Variables
 
     [Header("Model & Animations")]
     [SerializeField] public GameObject playerModel;
@@ -64,16 +64,10 @@ public class PlayerController : MonoBehaviour
     public MainCamera mainCamera;
     public float multiplierX;
 
-    //-- BRIDGES -------------------------------------------------------------------------------------------------------------------
+    #endregion
 
-    [Header("Bridges")]
-    public BridgePlayerAnimator bridgePlayerAnimator;
-    public BridgePlayerAudio bridgePlayerAudio;
-
+    #region Awake & Start
     
-
-    //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
-
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -110,6 +104,10 @@ public class PlayerController : MonoBehaviour
         );
     }
 
+    #endregion
+
+    #region Update & FixedUpdate
+
     private void Update()
     {
         CheckInput();
@@ -125,7 +123,9 @@ public class PlayerController : MonoBehaviour
         SetGravity();
     }
 
-    //-- CHECKINPUT ----------------------------------------------------------------------------------------------------------------
+    #endregion
+
+    #region CheckInput
 
     private void CheckInput()
     {
@@ -134,7 +134,9 @@ public class PlayerController : MonoBehaviour
 
     // PATRON COMMAND
 
-    //-- MOVE ----------------------------------------------------------------------------------------------------------------------
+    #endregion
+
+    #region Move Model
 
     private void Move(bool useThis)
     {
@@ -160,7 +162,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //-- GRAVITY -------------------------------------------------------------------------------------------------------------------
+    #endregion
+
+    #region Gravity
 
     private void SetGravity()
     {
@@ -168,9 +172,9 @@ public class PlayerController : MonoBehaviour
         rigidBody.AddForce(_gravity, ForceMode.Acceleration);
     }
 
-    //-- FLIP ----------------------------------------------------------------------------------------------------------------------
+    #endregion
 
-    
+    #region Flip
 
     public void Flip()
     {
@@ -196,8 +200,8 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
 
+    #endregion
 
     //-- CHECKGROUND----------------------------------------------------------------------------------------------------------------
 
@@ -228,7 +232,7 @@ public class PlayerController : MonoBehaviour
     {
         // CAMBIAR PARA QUE NO SE PUEDA MOVER JUSTO CUANDO MUERE Y HACER UN FADE
 
-        deathRespawn.Death();
+        deathRespawn.Death(lastPositionInGround);
 
         playerAnimator.SetTrigger("Death");
 

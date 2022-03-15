@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VIDE_Data;
+using scripts.sceneManager.sceneController;
 
 public class BossEntrance : MonoBehaviour
 {
