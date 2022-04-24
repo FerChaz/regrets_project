@@ -1288,13 +1288,12 @@ MonoBehaviour:
   model: {fileID: 1483005539}
   playerHealthSignal: {fileID: 11400000, guid: 36a3af5f6fe30f14591bdf25c8015f35, type: 2}
   playerController: {fileID: 306033100}
-  soulsController: {fileID: 0}
   knockbackController: {fileID: 0}
   deathFade: {fileID: 0}
   soulsToRecover: {fileID: 11400000, guid: 0d55266bc5806974a9620bf273e65772, type: 2}
   modelToShow: {fileID: 0}
   lowLifeCanvas: {fileID: 0}
-  "recibeDa\xF1oPlayer": {fileID: 0}
+  damagePlayerAudio: {fileID: 0}
   lifeContainer: {fileID: 0}
   heartContainers: {fileID: 0}
 --- !u!65 &228733876
@@ -1928,11 +1927,8 @@ MonoBehaviour:
   soulRecoveryData: {fileID: 11400000, guid: 0d55266bc5806974a9620bf273e65772, type: 2}
   additiveSceneInfo: {fileID: 0}
   recover: {fileID: 0}
-  sceneController: {fileID: 0}
-  playerController: {fileID: 0}
   soulsController: {fileID: 0}
   limboController: {fileID: 0}
-  checkpoint: {fileID: 0}
   respawnController: {fileID: 0}
   playerJump: {fileID: 0}
   isFirstDead: 0
@@ -2007,8 +2003,6 @@ MonoBehaviour:
   canChangeGravity: 0
   mainCamera: {fileID: 0}
   multiplierX: 0
-  bridgePlayerAnimator: {fileID: 322342270}
-  bridgePlayerAudio: {fileID: 1287532253}
 --- !u!54 &306033101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14166,15 +14160,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 64000011487076046, guid: b07571e14a54e824fa328b3df163a8f8, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64000011487076046, guid: b07571e14a54e824fa328b3df163a8f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b07571e14a54e824fa328b3df163a8f8, type: 3}
 --- !u!4 &877493396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010766231838, guid: b07571e14a54e824fa328b3df163a8f8, type: 3}
   m_PrefabInstance: {fileID: 877493395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &877493397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013395707006, guid: b07571e14a54e824fa328b3df163a8f8, type: 3}
+  m_PrefabInstance: {fileID: 877493395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &877493398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877493397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.0199695, y: 11.537278, z: 9.290331}
+  m_Center: {x: 2.0099792, y: 5.268637, z: -0.61136895}
 --- !u!1 &883034091
 GameObject:
   m_ObjectHideFlags: 0
@@ -14762,11 +14775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1509966519c9fc64aa2c85951e041229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneManager: {fileID: 0}
-  additiveScenes:
-  - Intro
-  actualScene: House
-  sceneInfo: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
   transitionCanvas: {fileID: 0}
   canvasAnimator: {fileID: 0}
 --- !u!114 &1042956532
@@ -17303,7 +17311,6 @@ MonoBehaviour:
   comboPossible: 1
   doCombo: 0
   katana: {fileID: 0}
-  player: {fileID: 0}
   weapon: {fileID: 0}
   weaponParticle: {fileID: 0}
 --- !u!114 &1483005542
