@@ -23,6 +23,7 @@ public class BossEntrance : MonoBehaviour
 
     private void Awake()
     {
+        diagUI = FindObjectOfType<VIDEUIManager1>();
         sceneController = FindObjectOfType<SceneController>();
         player = FindObjectOfType<PlayerController>();
     }

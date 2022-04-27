@@ -15,6 +15,7 @@ public class TutorialMove : MonoBehaviour
 
     public ParticleSystem effect;
     public GameObject model;
+    public GameObject dialogue;
 
     public StartingScene startingSceneController;
 
@@ -32,6 +33,7 @@ public class TutorialMove : MonoBehaviour
     public void Show()
     {
         eventHappened.eventAlreadyHappened = true;
+        dialogue.SetActive(false);
         canvas.SetActive(true);
 
         effect.Play();

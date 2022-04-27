@@ -2264,7 +2264,7 @@ MonoBehaviour:
   loadingCanvas: {fileID: 858599384}
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
   sceneInfo: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
-  initialPosition: {x: -485, y: 7.95, z: 0}
+  initialPosition: {x: -486, y: 8, z: 0}
   initialScene: House
   additiveScenes:
   - Intro

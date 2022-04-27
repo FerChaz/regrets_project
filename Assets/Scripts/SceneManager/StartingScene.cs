@@ -64,7 +64,7 @@ namespace scripts.sceneManager.startingScene
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                diagUI.Interact(dialogue);
+                //diagUI.Interact(dialogue);
                 /*if (eventHappened.eventAlreadyHappened)
                 {
                     this.gameObject.SetActive(false);
@@ -85,7 +85,7 @@ namespace scripts.sceneManager.startingScene
         {
             yield return new WaitForSeconds(1.5f);
             sceneManager.ChangePlayerPosition(position);
-            diagUI.Interact(dialogue);
+            //diagUI.Interact(dialogue);
         }
 
         #endregion
@@ -94,7 +94,7 @@ namespace scripts.sceneManager.startingScene
 
         public void Stand()                                 //Se lo llama desde el dialogo
         {
-            playerAnimator.SetBool("Stand", true);
+            //playerAnimator.SetBool("Stand", true);
         }
 
         #endregion
