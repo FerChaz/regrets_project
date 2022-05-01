@@ -113,8 +113,8 @@ Material:
     - _Color: {r: 0.014083939, g: 0.014083939, b: 0.014083939, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadowColor: {r: 0.15094337, g: 0.15094337, b: 0.15094337, a: 0}
-    - _MainColor: {r: 0.122641504, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _SecondShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _Specolor: {r: 0, g: 0, b: 0, a: 0}

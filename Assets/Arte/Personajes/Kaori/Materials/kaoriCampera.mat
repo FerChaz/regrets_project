@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kaoriBody
+  m_Name: kaoriCampera
   m_Shader: {fileID: 4800000, guid: f3d1059243b2ff74b91dc67159f8dcd2, type: 3}
-  m_ShaderKeywords: _RIMTYPE_HALFLAMBERT _SHADOWHLIGHTTOGGLE_ON
+  m_ShaderKeywords: _RIMTYPE_NORMAL _SHADOWHLIGHTTOGGLE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Maintex:
-        m_Texture: {fileID: 2800000, guid: be548984a6ed1d74183cfe334fd584a7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -86,7 +86,7 @@ Material:
     - _DstBlend: 0
     - _EmissionMult: 0
     - _FirstShadowSmooth: 0
-    - _FirstShadowThre: 0.601
+    - _FirstShadowThre: 0.5
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -95,26 +95,26 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineWidth: 1
     - _Parallax: 0.02
-    - _RimScale: 0.27
+    - _RimScale: 0.01
     - _RimToggle: 0
     - _Rimoffset: 0
-    - _Rimtype: 1
-    - _SceondShadowThre: 0
+    - _Rimtype: 0
+    - _SceondShadowThre: 0.5
     - _ShadowhlightToggle: 1
     - _SmoothnessTextureChannel: 0
     - _SpecMulti: 0
-    - _Specgloss: 1
+    - _Specgloss: 5.647059
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FirstShadowColor: {r: 0.87843144, g: 0.65882355, b: 0.6, a: 0}
-    - _MainColor: {r: 1, g: 0.92038786, b: 0.8537736, a: 0}
-    - _OutlineColor: {r: 0.47450978, g: 0.3215686, b: 0.2235294, a: 0}
+    - _FirstShadowColor: {r: 0.15094337, g: 0.15094337, b: 0.15094337, a: 0}
+    - _MainColor: {r: 0.0026433107, g: 0, b: 0.064, a: 0}
+    - _OutlineColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _SecondShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _Specolor: {r: 0, g: 0, b: 0, a: 0}

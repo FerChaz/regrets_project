@@ -93,7 +93,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0
+    - _OutlineWidth: 1
     - _Parallax: 0.02
     - _RimScale: 0
     - _RimToggle: 0
@@ -113,8 +113,8 @@ Material:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadowColor: {r: 0.15094337, g: 0.15094337, b: 0.15094337, a: 0}
-    - _MainColor: {r: 0.3773585, g: 0.012459958, b: 0.012459958, a: 0}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 0}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _SecondShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _Specolor: {r: 0, g: 0, b: 0, a: 0}

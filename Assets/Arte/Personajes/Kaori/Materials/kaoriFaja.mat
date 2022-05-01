@@ -105,8 +105,8 @@ Material:
     m_Colors:
     - _Color: {r: 0.22593759, g: 0.081374414, b: 0.8000001, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FirstShadowColor: {r: 0.2784314, g: 0.21176472, b: 0.36078432, a: 0}
-    - _MainColor: {r: 0.75484365, g: 0.5729352, b: 0.9716981, a: 0}
+    - _FirstShadowColor: {r: 0.36078432, g: 0.21176471, b: 0.21176471, a: 0}
+    - _MainColor: {r: 0.6792453, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0.28025806, g: 0.21311292, b: 0.36200002, a: 0}
     - _RimColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0}
     - _SecondShadowColor: {r: 0, g: 0, b: 0, a: 0}
