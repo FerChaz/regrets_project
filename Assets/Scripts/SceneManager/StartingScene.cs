@@ -17,8 +17,8 @@ namespace scripts.sceneManager.startingScene
         public AdditiveScenesInfo sceneInfo;
 
         public Vector3 initialPosition;
-        public string initialScene;
-        public List<string> additiveScenes;
+        public StringValue initialScene;
+        public List<StringValue> additiveScenes;
 
         public Animator playerAnimator;
 
@@ -38,13 +38,17 @@ namespace scripts.sceneManager.startingScene
         {
             if (respawnInfo.isRespawning)                                                       // Se cargo una partida 
             {
-                sceneManager.LoadSceneInAdditive(respawnInfo.sceneToRespawn, OnSceneComplete);
+                sceneManager.LoadSceneInAdditive(respawnInfo.sceneToRespawn.actualScene, OnSceneComplete);
                 StartCoroutine(WaitToChange(respawnInfo.respawnPosition));
             }
             else                                                                                // Empezamos desde 0
             {
-                sceneManager.LoadSceneInAdditive(initialScene, OnSceneComplete);
-                sceneManager.LoadSceneInAdditive(additiveScenes[0], OnSceneComplete);
+                sceneManager.LoadSceneInAdditive(initialScene.actualScene, OnSceneComplete);
+                if (additiveScenes.Count > 0)
+                {
+                    sceneManager.LoadSceneInAdditive(additiveScenes[0].actualScene, OnSceneComplete);
+                }
+                
 
                 sceneInfo.additiveScenes = additiveScenes;
                 sceneInfo.actualScene = initialScene;
@@ -60,12 +64,12 @@ namespace scripts.sceneManager.startingScene
 
         #region Update
 
-        private void Update()
+        /*private void Update()
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //diagUI.Interact(dialogue);
-                /*if (eventHappened.eventAlreadyHappened)
+                if (eventHappened.eventAlreadyHappened)
                 {
                     this.gameObject.SetActive(false);
                     return;
@@ -73,9 +77,9 @@ namespace scripts.sceneManager.startingScene
                 else
                 {
 
-                }*/
+                }
             }
-        }
+        }*/
 
         #endregion
 

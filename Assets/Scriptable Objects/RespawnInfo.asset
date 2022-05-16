@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RespawnInfo
   m_EditorClassIdentifier: 
   respawnPosition: {x: -412, y: 1, z: 0}
-  sceneToRespawn: Intro
+  sceneToRespawn: {fileID: 0}
   additiveScenesToCharge:
-  - MainLevel
-  checkpointActivename: Intro
+  - {fileID: 0}
+  checkpointActivename: 
   isRespawning: 0

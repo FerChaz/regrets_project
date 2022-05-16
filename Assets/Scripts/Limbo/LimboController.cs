@@ -47,14 +47,14 @@ namespace scripts.limbo.limboController
 
             if (_random == 1)
             {
-                limboInfo.limboScene = "Limbo1";
+                limboInfo.limboScene.actualScene = "Limbo1";
                 sceneController.LoadSceneInAdditive("Limbo1", OnSceneComplete);
                 StartCoroutine(WaitToChange(limboInfo.positionToGoInLimbo1));
 
             }
             else
             {
-                limboInfo.limboScene = "Limbo2";
+                limboInfo.limboScene.actualScene = "Limbo2";
                 sceneController.LoadSceneInAdditive("Limbo2", OnSceneComplete);
                 StartCoroutine(WaitToChange(limboInfo.positionToGoInLimbo2));
             }

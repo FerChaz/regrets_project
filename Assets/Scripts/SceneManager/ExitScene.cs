@@ -10,12 +10,12 @@ namespace scripts.sceneManager.exitScene
         #region Variables
 
         [Header("SceneToGoData")]
-        public List<string> scenesToUnload;
+        public List<StringValue> scenesToUnload;
         public Vector3 playerPositionToGo;
 
         public SceneController _sceneManager;
-        public string _actualScene;
-        public string sceneToGo;
+        public StringValue _actualScene;
+        public StringValue sceneToGo;
 
         public GameObject transitionCanvas;
         public Animator canvasAnimator;
@@ -27,6 +27,7 @@ namespace scripts.sceneManager.exitScene
         public float topTime = 1;
         private Vector3 movement;
         public int direction;
+        public bool moveHorizontal;
 
         public bool needToStopMusic;
 
@@ -52,8 +53,15 @@ namespace scripts.sceneManager.exitScene
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                StartCoroutine(Move());
-                movement.Set(15f * direction, 0.0f, 0.0f);
+                if (moveHorizontal)
+                {
+                    movement.Set(15f * direction, 0.0f, 0.0f);
+                    StartCoroutine(MoveHorizontal());
+                } else
+                {
+                    StartCoroutine(MoveVertical());
+                }
+                
 
                 CanvasTransition();
 
@@ -78,23 +86,23 @@ namespace scripts.sceneManager.exitScene
         {
             yield return wait;
 
-            foreach (string scene in scenesToUnload)
+            foreach (StringValue scene in scenesToUnload)
             {
-                if (scene != sceneToGo)                                           // Mejorar la comparacion de strings
+                if (scene.actualScene != sceneToGo.actualScene)                                    // Mejorar la comparacion de strings
                 {
-                    _sceneManager.UnloadSceneInAdditive(scene, OnSceneComplete);
+                    _sceneManager.UnloadSceneInAdditive(scene.actualScene, OnSceneComplete);
                 }
             }
 
             _sceneManager.ChangePlayerPosition(playerPositionToGo);
-            _sceneManager.UnloadSceneInAdditive(_actualScene, OnSceneComplete);
+            _sceneManager.UnloadSceneInAdditive(_actualScene.actualScene, OnSceneComplete);
         }
 
         #endregion
 
         #region ExitMovePlayer
 
-        IEnumerator Move()
+        IEnumerator MoveHorizontal()
         {
             player.CanDoAnyMovement(false);
             float timer = 0;
@@ -105,8 +113,17 @@ namespace scripts.sceneManager.exitScene
                 timer += Time.deltaTime;
                 yield return null;
             }
+            
             player.CanDoAnyMovement(true);
         }
+
+        IEnumerator MoveVertical()
+        {
+            yield return wait;
+
+            player.CanDoAnyMovement(true);
+        }
+
 
         #endregion
 

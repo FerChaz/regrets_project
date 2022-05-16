@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005613903, g: 0.014590438, b: 0.06470939, a: 1}
+  m_IndirectSpecularColor: {r: 0.0056186034, g: 0.01458778, b: 0.06467861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7826,9 +7826,9 @@ MonoBehaviour:
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
   sceneInfo: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
   initialPosition: {x: -486, y: 8, z: 0}
-  initialScene: House
+  initialScene: {fileID: 11400000, guid: 221dbd0ee0a35b7459ee89ea60203d07, type: 2}
   additiveScenes:
-  - Intro
+  - {fileID: 11400000, guid: 58336d1312cb0a442a0cd725b4da84c2, type: 2}
   playerAnimator: {fileID: 1514903493648472461}
   dialogue: {fileID: 1623151282}
   diagUI: {fileID: 401197553}
@@ -8017,7 +8017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &601461866
 Transform:
   m_ObjectHideFlags: 0
@@ -26444,8 +26444,8 @@ MonoBehaviour:
   bridgePlayerAnimator: {fileID: 0}
   playerAnimatorController: {fileID: 0}
   fallMultiplier: 10
-  lowJumpMultiplier: 8
-  jumpVelocity: 30
+  lowJumpMultiplier: 16
+  jumpVelocity: 10
   normalSmooth: 0.125
   smoothJump: 0.125
   smoothFall: 0.05
@@ -26453,6 +26453,9 @@ MonoBehaviour:
   audioSource: {fileID: 1537300087}
   clipJump: {fileID: 8300000, guid: 8d738c93ab179f64cb50ea545e551938, type: 3}
   mainCamera: {fileID: 0}
+  jumpTime: 0.35
+  jumpTimeCounter: 0
+  jumpForceToHold: 25
 --- !u!114 &1537300096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26903,7 +26906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1623151281
 Transform:
   m_ObjectHideFlags: 0
@@ -26940,16 +26943,19 @@ MonoBehaviour:
   - demo_Narration
   - Example3Dialogue
   - Example4_dialogue
+  - FirstLimboDialogue
   - IntroDialogue
   - Item_LookUp
   - Laura
+  - MarketParcaDialogue
   - MrCube
   - NPCOnly
+  - PreBossDialogue
   - PruebaChris
   - QuestChartDemo
   - TriggeredDude
   - Witch
-  assignedIndex: 9
+  assignedIndex: 10
   assignedID: 88920
   assignedDialogue: IntroDialogue
   interactionCount: 0

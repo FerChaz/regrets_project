@@ -10,9 +10,9 @@ public class LimboInfo : ScriptableObject
 
     public Vector3 deathPosition;
 
-    public string limboScene;
+    public StringValue limboScene;
 
-    public string deathScene;
+    public StringValue deathScene;
 
     public bool isPlayerInLimbo;
 }

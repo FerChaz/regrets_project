@@ -25,6 +25,12 @@ public class PlayerJump : PlayerHabilities
     [Header("Camera")]
     public MainCamera mainCamera;
 
+    private bool isJumping;
+    public float jumpTime;
+    public float jumpTimeCounter;
+    public float jumpForceToHold;
+    private Vector3 jumpForce;
+
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
 
     protected override void Start()
@@ -36,13 +42,13 @@ public class PlayerJump : PlayerHabilities
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && _player.isGrounded && _player.canJump)
+        /*if (Input.GetButtonDown("Jump") && _player.isGrounded && _player.canJump)
         {
             mainCamera.ChangeSmoothTimeY(smoothJump);
             jumpRequest = true;
             audioSource.clip = clipJump;
             audioSource.Play();
-        }
+        }*/
 
         //if (!dashController.isDashing)
         if (_player.canChangeGravity)
@@ -54,6 +60,7 @@ public class PlayerJump : PlayerHabilities
             }
             else if (_player.rigidBody.velocity.y >= 0.0f)
             {
+                //Debug.Log($"{_player.rigidBody.velocity.y}");
                 mainCamera.ChangeSmoothTimeY(smoothJump);
                 _player.gravityScale = lowJumpMultiplier;
             }
@@ -71,11 +78,42 @@ public class PlayerJump : PlayerHabilities
 
     private void FixedUpdate()
     {
-        if (jumpRequest)
+        /*if (jumpRequest)
         {
             _player.rigidBody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
+
+            jumpForce.Set(_player.rigidBody.velocity.x, jumpVelocity, 0.0f);
             //playerAnimatorController.Jump();
             jumpRequest = false;
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+        }*/
+
+        if(Input.GetButtonDown("Jump") && _player.isGrounded && _player.canJump)
+        {
+            mainCamera.ChangeSmoothTimeY(smoothJump);
+            _player.rigidBody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+        }
+
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if(jumpTimeCounter > 0)
+            {
+                jumpForce.Set(_player.rigidBody.velocity.x, jumpForceToHold, 0.0f);
+                _player.rigidBody.velocity = jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
         }
         
     }

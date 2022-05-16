@@ -9,8 +9,8 @@ namespace scripts.checkpoint.checkpoint
     {
         #region Variables
 
-        public List<string> scenesToChargeInAdditive;
-        public string checkpointSceneName;
+        public List<StringValue> scenesToChargeInAdditive;
+        public StringValue checkpointSceneName;
 
         public RespawnInfo respawnInfo;
         public AdditiveScenesInfo additiveScenesScriptableObject;
@@ -89,7 +89,7 @@ namespace scripts.checkpoint.checkpoint
             respawnInfo.respawnPosition = transform.position;
             respawnInfo.sceneToRespawn = checkpointSceneName;
             respawnInfo.additiveScenesToCharge = scenesToChargeInAdditive;
-            respawnInfo.checkpointActivename = gameObject.name;
+            respawnInfo.checkpointActivename = gameObject.name; // REVISAR, TENGO QUE ASIGNARLE UN STRING VALUE
 
             //saveController.SaveData();
 
@@ -114,9 +114,9 @@ namespace scripts.checkpoint.checkpoint
                 entrance.SetActive(false);                          // Disable other entrances
             }
 
-            foreach (string scene in scenesToChargeInAdditive)
+            foreach (StringValue scene in scenesToChargeInAdditive)
             {
-                _sceneController.LoadSceneInAdditive(scene, OnSceneComplete);
+                _sceneController.LoadSceneInAdditive(scene.actualScene, OnSceneComplete);
             }
 
             additiveScenesScriptableObject.actualScene = checkpointSceneName;

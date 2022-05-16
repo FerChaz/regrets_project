@@ -52,17 +52,17 @@ namespace scripts.respawn.respawnController
 
             sceneController.ChangePlayerPosition(Vector3.zero);
 
-            sceneController.UnloadSceneInAdditive(additiveScenesInfo.actualScene, OnSceneComplete);
+            sceneController.UnloadSceneInAdditive(additiveScenesInfo.actualScene.actualScene, OnSceneComplete);
 
-            foreach (string scene in additiveScenesInfo.additiveScenes)
+            foreach (StringValue scene in additiveScenesInfo.additiveScenes)
             {
-                if (scene != additiveScenesInfo.actualScene)
+                if (scene.actualScene != additiveScenesInfo.actualScene.actualScene)
                 {
-                    sceneController.UnloadSceneInAdditive(scene, OnSceneComplete);
+                    sceneController.UnloadSceneInAdditive(scene.actualScene, OnSceneComplete);
                 }
             }
 
-            sceneController.LoadSceneInAdditive(respawnInfo.sceneToRespawn, OnSceneComplete);
+            sceneController.LoadSceneInAdditive(respawnInfo.sceneToRespawn.actualScene, OnSceneComplete);
             respawnInfo.isRespawning = true;
 
             StartCoroutine(WaitToChange());

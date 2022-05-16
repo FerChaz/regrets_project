@@ -15,8 +15,8 @@ namespace scripts.sceneManager.enterScene
 
         public SceneController _sceneManager;
 
-        public List<string> additiveScenes;
-        public string actualScene;
+        public List<StringValue> additiveScenes;
+        public StringValue actualScene;
 
         public AdditiveScenesInfo sceneInfo;
 
@@ -31,6 +31,7 @@ namespace scripts.sceneManager.enterScene
         private Vector3 movement;
         public float direction;
         public int musicIndex;
+        public bool moveHorizontal;
 
         #endregion
 
@@ -63,14 +64,22 @@ namespace scripts.sceneManager.enterScene
                     otherEntrances[i].SetActive(false);         // Disable other entrances
                 }
 
-                foreach (string scene in additiveScenes)
+                foreach (StringValue scene in additiveScenes)
                 {
-                    _sceneManager.LoadSceneInAdditive(scene, OnSceneComplete);
+                    _sceneManager.LoadSceneInAdditive(scene.actualScene, OnSceneComplete);
                 }
 
                 StartCoroutine(WaitForFade());
-                movement.Set(15f * direction, 0.0f, 0.0f);
-                StartCoroutine(Move());
+
+                if (moveHorizontal)
+                {
+                    movement.Set(15f * direction, 0.0f, 0.0f);
+                    StartCoroutine(MoveHorizontal());
+                }
+                else //CoroutineVertical
+                {
+                    StartCoroutine(MoveVertical());
+                }
 
                 _sceneManager.StartMusic(musicIndex);
             }
@@ -104,7 +113,7 @@ namespace scripts.sceneManager.enterScene
 
         #region EnterMovePlayer
 
-        IEnumerator Move()
+        IEnumerator MoveHorizontal()
         {
             player.CanDoAnyMovement(false);
             float timer = 0;
@@ -139,6 +148,15 @@ namespace scripts.sceneManager.enterScene
             player.CanDoAnyMovement(true);
             gameObject.SetActive(false);
         }
+
+        IEnumerator MoveVertical()
+        {
+            yield return wait;
+
+            player.CanDoAnyMovement(true);
+            gameObject.SetActive(false);
+        }
+
 
         #endregion
 

@@ -41,7 +41,7 @@ public class LoadController : MonoBehaviour
 
     public void LoadRespawnInfo()
     {
-        respawnInfo.sceneToRespawn= SessionData.Data.spawnScene;
+        //respawnInfo.sceneToRespawn= SessionData.Data.spawnScene;
         respawnInfo.respawnPosition= SessionData.Data.spawnPlayerPosition;
         respawnInfo.isRespawning = true;
     }

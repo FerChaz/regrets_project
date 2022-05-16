@@ -16,6 +16,9 @@ namespace scripts.ui.tutorial.introfirstdialogue
         //Reference to our diagUI script for quick access
         public VIDEUIManager1 diagUI;
 
+        //Reference To VidePlayer
+        public VIDEPlayer videPlayer;
+
         public SceneController sceneController;
 
         public Animator playerAnimator;
@@ -25,22 +28,24 @@ namespace scripts.ui.tutorial.introfirstdialogue
             diagUI = FindObjectOfType<VIDEUIManager1>();
             sceneController = FindObjectOfType<SceneController>();
             player = FindObjectOfType<PlayerController>();
+            videPlayer = player.GetComponentInChildren<VIDEPlayer>();
             playerAnimator = player.GetComponentInChildren<Animator>();
         }
 
-        private void Update()
+        /*private void Update()
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 diagUI.Interact(dialogue);
             }
-        }
+        }*/
 
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                videPlayer.inTrigger = dialogue;
                 diagUI.Interact(dialogue);
             }
         }
@@ -53,6 +58,11 @@ namespace scripts.ui.tutorial.introfirstdialogue
         }
 
         #endregion
+
+        public void EndDialogue()
+        {
+            videPlayer.inTrigger = null;
+        }
 
     }
 }

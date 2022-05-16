@@ -35,7 +35,7 @@ public class SaveController : MonoBehaviour
 
     public void SaveRespawnInfo()
     {
-        SessionData.Data.spawnScene = respawnInfo.sceneToRespawn;
+        //SessionData.Data.spawnScene = respawnInfo.sceneToRespawn;
         SessionData.Data.spawnPlayerPosition = respawnInfo.respawnPosition;
     }
 

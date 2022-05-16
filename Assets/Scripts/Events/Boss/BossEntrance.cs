@@ -13,6 +13,9 @@ public class BossEntrance : MonoBehaviour
     //Reference To Player
     public PlayerController player;
 
+    //Reference To VidePlayer
+    public VIDEPlayer videPlayer;
+
     //Stored current VA when inside
     public VIDE_Assign dialogue;
 
@@ -26,36 +29,40 @@ public class BossEntrance : MonoBehaviour
         diagUI = FindObjectOfType<VIDEUIManager1>();
         sceneController = FindObjectOfType<SceneController>();
         player = FindObjectOfType<PlayerController>();
+        videPlayer = player.GetComponentInChildren<VIDEPlayer>();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             /*if (eventHappened.eventAlreadyHappened)
             {
                 return;
-            }*/
+            }
             //else
             //{
                 diagUI.Interact(dialogue);
             //}
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Boss"))
         {
+            videPlayer.inTrigger = dialogue;
             diagUI.Interact(dialogue);
+
             bossController.animatorController.Landing();
         }
     }
 
     public void StartFight()
     {
+        videPlayer.inTrigger = null;
         bossController.isEntranceStateRunning = false;
-        this.gameObject.SetActive(false);
         sceneController.StartMusic(musicIndex);
+        this.gameObject.SetActive(false);
     }
 }

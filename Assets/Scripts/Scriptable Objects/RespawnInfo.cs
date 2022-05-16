@@ -6,9 +6,9 @@ using UnityEngine;
 public class RespawnInfo : ScriptableObject
 {
     public Vector3 respawnPosition;
-    public string sceneToRespawn;
+    public StringValue sceneToRespawn;
 
-    public List<string> additiveScenesToCharge;
+    public List<StringValue> additiveScenesToCharge;
 
     public string checkpointActivename;
 

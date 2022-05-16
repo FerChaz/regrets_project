@@ -36,8 +36,6 @@ public class PlayerEntranceInBoss : MonoBehaviour
         bossCamera.SetActive(true);
         mainCamera.SetActive(false);
 
-        playerJump.jumpVelocity = 40.0f;
-
         bossController.Entrance();
 
         this.gameObject.SetActive(false);

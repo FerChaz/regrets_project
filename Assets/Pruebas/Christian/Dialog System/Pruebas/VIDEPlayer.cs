@@ -25,6 +25,8 @@ public class VIDEPlayer : MonoBehaviour
     //Reference To Player
     public PlayerController player;
 
+    private bool VDwasActive;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<VIDE_Assign>() != null)
@@ -43,9 +45,11 @@ public class VIDEPlayer : MonoBehaviour
         if (VD.isActive)
         {
             player.CanDoAnyMovement(false);
+            VDwasActive = true;
         }
-        else
+        else if (!VD.isActive && VDwasActive)
         {
+            VDwasActive = false;
             player.CanDoAnyMovement(true);
         }
 
@@ -81,14 +85,7 @@ public class VIDEPlayer : MonoBehaviour
                 assigned = rHit.collider.GetComponent<VIDE_Assign>();
             else return;
 
-            if (assigned.alias == "QuestUI")
-            {
-                //questUI.Interact(); //Begins interaction with Quest Chart
-            }
-            else
-            {
-                diagUI.Interact(assigned); //Begins interaction
-            }
+            diagUI.Interact(assigned); //Begins interaction
         }
     }
 #if UNITY_EDITOR

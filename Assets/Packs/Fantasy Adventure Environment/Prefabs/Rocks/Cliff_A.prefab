@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012239912756}
   - component: {fileID: 205000013662551996}
-  - component: {fileID: 64000013571711988}
   m_Layer: 0
   m_Name: Cliff_A
   m_TagString: Untagged
@@ -62,20 +61,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23000010582669138}
   m_Enabled: 1
---- !u!64 &64000013571711988
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010017310506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2141426934691132989, guid: 75de1873c2949c344b0d962c7e4437f2, type: 3}
 --- !u!1 &1000010416446216
 GameObject:
   m_ObjectHideFlags: 0
