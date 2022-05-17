@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckInput();
         Flip();
-        CheckGround();
+        
         LastPositionInGround();
         //CheckTagGround();
     }
@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         Move(useMovePlayerController);
         SetGravity();
+        CheckGround();
     }
 
     #endregion

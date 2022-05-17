@@ -55,7 +55,7 @@ namespace scripts.limbo.ExitLimbo
 
             limboInfo.isPlayerInLimbo = false;
             sceneController.ChangePlayerPosition(limboInfo.deathPosition);
-            sceneController.UnloadSceneInAdditive(limboInfo.limboScene.actualScene, OnSceneComplete);
+            sceneController.UnloadSceneInAdditive(limboInfo.limboScene, OnSceneComplete);
             canvasAnimator.SetBool("ToBlack", false);
         }
 

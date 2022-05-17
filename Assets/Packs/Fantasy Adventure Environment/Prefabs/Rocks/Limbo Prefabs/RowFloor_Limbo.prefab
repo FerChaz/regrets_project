@@ -333,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360409056188588100}
+  - component: {fileID: 7302848560727138402}
   m_Layer: 0
   m_Name: Cliff_A (850)
   m_TagString: Untagged
@@ -355,6 +356,25 @@ Transform:
   m_Father: {fileID: 8266918643654143169}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &7302848560727138402
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363637039973193818}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.000030517578, y: 0, z: -1}
+  m_Size: 16.51133
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09863484
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1350700876575392730}
+  m_Enabled: 1
 --- !u!1 &1363637040493458219
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360409056675613493}
+  - component: {fileID: 4183211713443265115}
   m_Layer: 0
   m_Name: Cliff_A (851)
   m_TagString: Untagged
@@ -386,6 +407,25 @@ Transform:
   m_Father: {fileID: 8266918643654143169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &4183211713443265115
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363637040493458219}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.000030517578, y: 0, z: -0.99999785}
+  m_Size: 16.51133
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.0953139
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1350700874947782827}
+  m_Enabled: 1
 --- !u!1 &1363637040676588712
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360409057296741558}
+  - component: {fileID: 8033675223621279528}
   m_Layer: 0
   m_Name: Cliff_A (848)
   m_TagString: Untagged
@@ -417,6 +458,25 @@ Transform:
   m_Father: {fileID: 8266918643654143169}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &8033675223621279528
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363637040676588712}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.000030517578, y: 0, z: -0.99999976}
+  m_Size: 16.51133
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09863484
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1350700875133802280}
+  m_Enabled: 1
 --- !u!1 &1363637040701996553
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360409057288635927}
+  - component: {fileID: 7927572439485713247}
   m_Layer: 0
   m_Name: Cliff_A (849)
   m_TagString: Untagged
@@ -448,6 +509,25 @@ Transform:
   m_Father: {fileID: 8266918643654143169}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &7927572439485713247
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363637040701996553}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.000030517578, y: 0, z: -0.99999785}
+  m_Size: 16.51133
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09863484
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1350700875158676873}
+  m_Enabled: 1
 --- !u!1 &4814280715972548376
 GameObject:
   m_ObjectHideFlags: 0

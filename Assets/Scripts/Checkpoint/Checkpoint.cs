@@ -32,6 +32,9 @@ namespace scripts.checkpoint.checkpoint
 
         private WaitForSeconds wait = new WaitForSeconds(.5f);
 
+        private string sceneToLoad;
+
+
         #endregion
 
         #region Awake & Start
@@ -116,7 +119,8 @@ namespace scripts.checkpoint.checkpoint
 
             foreach (StringValue scene in scenesToChargeInAdditive)
             {
-                _sceneController.LoadSceneInAdditive(scene.actualScene, OnSceneComplete);
+                sceneToLoad = scene.actualScene;
+                _sceneController.LoadSceneInAdditive(sceneToLoad, OnSceneComplete);
             }
 
             additiveScenesScriptableObject.actualScene = checkpointSceneName;

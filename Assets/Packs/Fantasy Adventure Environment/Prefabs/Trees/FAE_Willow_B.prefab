@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011666171998}
+  - component: {fileID: 168452819164483761}
   m_Layer: 0
   m_Name: FAE_Willow_B
   m_TagString: Untagged
@@ -32,6 +33,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &168452819164483761
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010922001086}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -1.4392233, y: 14.091741, z: -1.0584888}
+  m_Size: 29.718954
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09696733
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23000010770280092}
+  m_Enabled: 1
 --- !u!1 &1000013008387122
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,11 @@ namespace scripts.end.endgame
         public StringValue bossDecision;
         public string decisionGood;
         public string decisionBad;
-        
+
+        public GameObject door;
+        private Animator doorAnimator;
+        private BoxCollider doorCollider;
+
 
         private void Awake()
         {
@@ -35,12 +39,18 @@ namespace scripts.end.endgame
             sceneController = FindObjectOfType<SceneController>();
             player = FindObjectOfType<PlayerController>();
             videPlayer = player.GetComponentInChildren<VIDEPlayer>();
+
+            doorCollider = door.GetComponent<BoxCollider>();
+            doorAnimator = door.GetComponentInChildren<Animator>();
         }
 
         public void EndBossFigth()
         {
             videPlayer.inTrigger = dialogue;
             diagUI.Interact(dialogue);
+
+            doorAnimator.SetBool("Open", true);
+            doorCollider.enabled = false;
         }
 
         public void EndDialogue()
@@ -61,17 +71,9 @@ namespace scripts.end.endgame
             bossDecision.actualScene = decisionBad;
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void EnableDisablePlayerMovement()
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                ChangeScene();
-            }
-        }
-
-        public void ChangeScene()
-        {
-            SceneManager.LoadScene("MainMenu");
+            player.ChangeCanDoAnyMovement();
         }
 
     }
