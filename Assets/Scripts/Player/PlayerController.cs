@@ -206,10 +206,17 @@ public class PlayerController : MonoBehaviour
 
     //-- CHECKGROUND----------------------------------------------------------------------------------------------------------------
 
+    public Transform checkcapsuStart;
+    public Transform checkcapsuEnd;
+    public float checkcapsuRadius;
+    public bool checkcapsu;
+
     private void CheckGround()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
         lastPositionInGroundBool = Physics.CheckSphere(groundCheck.position, groundCheckRadius, lastPositionInGroundLayer);
+
+        isGrounded = Physics.CheckCapsule(checkcapsuStart.position, checkcapsuEnd.position, checkcapsuRadius, whatIsGround);
 
         if (isGrounded)
         {
@@ -332,6 +339,10 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(checkcapsuStart.position, checkcapsuRadius);
+        Gizmos.DrawWireSphere(checkcapsuEnd.position, checkcapsuRadius);
     }
 
 #endif

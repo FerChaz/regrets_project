@@ -23,6 +23,8 @@ namespace scripts.ui.tutorial.introfirstdialogue
 
         public Animator playerAnimator;
 
+        public GameObject tutorialInteractuar;
+
         private void Awake()
         {
             diagUI = FindObjectOfType<VIDEUIManager1>();
@@ -55,6 +57,7 @@ namespace scripts.ui.tutorial.introfirstdialogue
         public void Stand()                                 //Se lo llama desde el dialogo
         {
             playerAnimator.SetBool("Stand", true);
+            tutorialInteractuar.gameObject.SetActive(false);
         }
 
         #endregion
