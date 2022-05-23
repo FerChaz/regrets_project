@@ -38,7 +38,7 @@ public class BossCombatController : MonoBehaviour
 
     public void GetDamage(float[] damage)
     {
-        if (!_bossController.isRolling)
+        if (!_bossController.isRolling && !_bossController.isDead)
         {
             bossLife.RecieveDamage(damage[0]);
 

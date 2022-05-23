@@ -48,7 +48,10 @@ namespace scripts.ui.tutorial.tutorial
 
         private void OnTriggerEnter(Collider other)
         {
-            Show();
+            if (!eventHappened.eventAlreadyHappened)
+            {
+                Show();
+            }
         }
 
         #endregion
@@ -65,8 +68,8 @@ namespace scripts.ui.tutorial.tutorial
         public void UnShow()
         {
             // FADE OUT Y DESPUES DESACTIVAR
+            playerController.CanDoAnyMovement(true);
             canvas.SetActive(false);
-            this.gameObject.SetActive(false);
         }
 
         #endregion

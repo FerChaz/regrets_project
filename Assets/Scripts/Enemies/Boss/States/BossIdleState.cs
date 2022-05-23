@@ -18,7 +18,7 @@ public class BossIdleState : State
         if (_bossController != null)
         {
             _bossController.isAnyStateRunning = true;
-            _totalIdleTime = 1.5f;
+            _totalIdleTime = 2.0f;
             ApplyIdle();
             _bossController.animatorController.Idle();
 

@@ -23,7 +23,7 @@ public class SpikesController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("LifeManager"))
+        if (other.gameObject.CompareTag("Player"))
         {
             if (player.lastPositionInGround.x > transform.position.x)
             {

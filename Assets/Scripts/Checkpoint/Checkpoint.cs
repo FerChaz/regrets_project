@@ -34,6 +34,7 @@ namespace scripts.checkpoint.checkpoint
 
         private string sceneToLoad;
 
+        public int musicToPlay;
 
         #endregion
 
@@ -105,6 +106,7 @@ namespace scripts.checkpoint.checkpoint
 
         public void Revive()
         {
+            _sceneController.StartMusic(musicToPlay);
             canvas.SetActive(false);
             _particle.Play();
 

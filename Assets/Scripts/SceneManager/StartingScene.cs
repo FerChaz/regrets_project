@@ -30,6 +30,8 @@ namespace scripts.sceneManager.startingScene
 
         public ObjectStatus eventHappened;
 
+        private string sceneToGo;
+
         #endregion
 
         #region Awake & Start
@@ -38,7 +40,8 @@ namespace scripts.sceneManager.startingScene
         {
             if (respawnInfo.isRespawning)                                                       // Se cargo una partida 
             {
-                sceneManager.LoadSceneInAdditive(respawnInfo.sceneToRespawn.actualScene, OnSceneComplete);
+                sceneToGo = respawnInfo.sceneToRespawn.actualScene;
+                sceneManager.LoadSceneInAdditive(sceneToGo, OnSceneComplete);
                 StartCoroutine(WaitToChange(respawnInfo.respawnPosition));
             }
             else                                                                                // Empezamos desde 0
@@ -46,7 +49,8 @@ namespace scripts.sceneManager.startingScene
                 sceneManager.LoadSceneInAdditive(initialScene.actualScene, OnSceneComplete);
                 if (additiveScenes.Count > 0)
                 {
-                    sceneManager.LoadSceneInAdditive(additiveScenes[0].actualScene, OnSceneComplete);
+                    sceneToGo = additiveScenes[0].actualScene;
+                    sceneManager.LoadSceneInAdditive(sceneToGo, OnSceneComplete);
                 }
                 
 

@@ -12,6 +12,7 @@ namespace scripts.sceneManager.ilumination.changeilumination {
         public float duration;
         public Color colorToChange;
         private Color initialColor;
+        public float intensity;
 
         private void Awake()
         {
@@ -24,7 +25,8 @@ namespace scripts.sceneManager.ilumination.changeilumination {
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                directionalLight.color = Color.Lerp(initialColor, colorToChange, duration);
+                directionalLight.color = colorToChange;
+                directionalLight.intensity = intensity;
             }
         }
 

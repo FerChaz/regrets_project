@@ -95,6 +95,9 @@ public class PlayerJump : PlayerHabilities
             _player.rigidBody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
             isJumping = true;
             jumpTimeCounter = jumpTime;
+
+            audioSource.clip = clipJump;
+            audioSource.Play();
         }
 
         if (Input.GetButton("Jump") && isJumping)

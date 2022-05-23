@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using scripts.sceneManager.sceneController;
 using scripts.sceneManager.exitScene;
 using scripts.sceneManager.enterScene;
@@ -31,6 +30,7 @@ namespace scripts.end.endgame
         public GameObject door;
         private Animator doorAnimator;
         private BoxCollider doorCollider;
+        private string sceneToLoad;
 
 
         private void Awake()
@@ -46,17 +46,12 @@ namespace scripts.end.endgame
 
         public void EndBossFigth()
         {
-            videPlayer.inTrigger = dialogue;
-            diagUI.Interact(dialogue);
-
             doorAnimator.SetBool("Open", true);
             doorCollider.enabled = false;
-        }
 
-        public void EndDialogue()
-        {
-            videPlayer.inTrigger = null;
-            EndBossFigth();
+            sceneToLoad = bossDecision.actualScene;
+            sceneController.StartMusic(1);
+            sceneController.LoadSceneInAdditive(sceneToLoad, OnSceneComplete);
         }
 
 
@@ -69,12 +64,25 @@ namespace scripts.end.endgame
         public void BadDecision()
         {
             bossDecision.actualScene = decisionBad;
+            EndBossFigth();
         }
 
         public void EnableDisablePlayerMovement()
         {
             player.ChangeCanDoAnyMovement();
         }
+
+
+        #region OnSceneComplete
+
+        private void OnSceneComplete()
+        {
+            Debug.Log($"OnScene async complete, {gameObject.name}");
+        }
+
+        #endregion
+
+
 
     }
 }

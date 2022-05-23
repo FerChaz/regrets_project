@@ -41,6 +41,7 @@ public class BossController : MonoBehaviour
     public bool canCheckJumpFinish;
     public bool isRolling;
     public bool isFallen;
+    public bool isDead;
 
     [Header("Jump Parabola Variable")]
     public ParabolaController parabolaController;
@@ -60,7 +61,7 @@ public class BossController : MonoBehaviour
     public bool canChangeGravity;
 
     [Header("End Dialogue")]
-    public GameObject dialogue;
+    public GameObject canvasDecidir;
 
     //-- START & UPDATE ------------------------------------------------------------------------------------------------------------
 
@@ -81,6 +82,7 @@ public class BossController : MonoBehaviour
         rigidBody.useGravity = false;
         isRolling = false;
         isFallen = false;
+        isDead = false;
     }
 
     private void Update()
@@ -116,7 +118,7 @@ public class BossController : MonoBehaviour
 
     public void Defeated()
     {
-        dialogue.SetActive(true);
+        canvasDecidir.SetActive(true);
     }
 
 #if UNITY_EDITOR

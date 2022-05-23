@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
         lastPositionInGroundBool = Physics.CheckSphere(groundCheck.position, groundCheckRadius, lastPositionInGroundLayer);
 
-        isGrounded = Physics.CheckCapsule(checkcapsuStart.position, checkcapsuEnd.position, checkcapsuRadius, whatIsGround);
+        //isGrounded = Physics.CheckCapsule(checkcapsuStart.position, checkcapsuEnd.position, checkcapsuRadius, whatIsGround);
 
         if (isGrounded)
         {
@@ -340,9 +340,9 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(checkcapsuStart.position, checkcapsuRadius);
-        Gizmos.DrawWireSphere(checkcapsuEnd.position, checkcapsuRadius);
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireSphere(checkcapsuStart.position, checkcapsuRadius);
+        //Gizmos.DrawWireSphere(checkcapsuEnd.position, checkcapsuRadius);
     }
 
 #endif

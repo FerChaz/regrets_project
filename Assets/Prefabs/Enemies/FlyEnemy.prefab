@@ -565,10 +565,10 @@ MonoBehaviour:
   timeToRecover: 4
   executed: 0
   normalicedActualBar: 0
-  chaseSpeed: 7
-  chargeSpeed: 7
-  chaseRadius: 20
-  attackRadius: 12
+  chaseSpeed: 12
+  chargeSpeed: 15
+  chaseRadius: 30
+  attackRadius: 18
   chargeTime: 6
   knockbackForce: 3
   knockbackDuration: 1

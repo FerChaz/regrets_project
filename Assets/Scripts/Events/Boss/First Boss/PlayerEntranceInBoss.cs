@@ -6,20 +6,19 @@ public class PlayerEntranceInBoss : MonoBehaviour
 {
     public BoxCollider entranceCollider;
 
-    public GameObject mainCamera;
-    public GameObject bossCamera;
     public GameObject boss;
     
     public BossController bossController;
 
-    public PlayerJump playerJump;
+    public PlayerController player;
+
+    private Vector3 bossPosition;
 
     private void Awake()
     {
         entranceCollider = GetComponent<BoxCollider>();
-        mainCamera = FindObjectOfType<MainCamera>().gameObject;
         bossController = FindObjectOfType<BossController>();
-        playerJump = FindObjectOfType<PlayerJump>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,10 +32,18 @@ public class PlayerEntranceInBoss : MonoBehaviour
 
     private void ActiveEntrance()
     {
-        bossCamera.SetActive(true);
-        mainCamera.SetActive(false);
+        if (!player.isFacingRight)
+        {
+            player.Flip();
+        }
 
+        player.CanDoAnyMovement(false);
+
+        bossPosition.Set(player.transform.position.x + 20.0f, bossController.transform.position.y, 0.0f);
+
+        bossController.transform.position = bossPosition;
         bossController.Entrance();
+
 
         this.gameObject.SetActive(false);
     }

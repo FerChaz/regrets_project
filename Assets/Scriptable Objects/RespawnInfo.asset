@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf54c43ab66a9cc40a424ad1ab7338fc, type: 3}
   m_Name: RespawnInfo
   m_EditorClassIdentifier: 
-  respawnPosition: {x: -412, y: 1, z: 0}
-  sceneToRespawn: {fileID: 0}
+  respawnPosition: {x: -409, y: 3, z: 0}
+  sceneToRespawn: {fileID: 11400000, guid: 58336d1312cb0a442a0cd725b4da84c2, type: 2}
   additiveScenesToCharge:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d253f178db5f4f740bb990be27e46b22, type: 2}
   checkpointActivename: 
   isRespawning: 0

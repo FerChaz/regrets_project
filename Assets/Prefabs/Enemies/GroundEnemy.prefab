@@ -246,7 +246,7 @@ MonoBehaviour:
   timeToRecover: 4
   executed: 0
   normalicedActualBar: 0
-  chaseVelocity: 15
+  chaseVelocity: 12
   chaseRadius: 10
   knockbackForce: 3
   knockbackDuration: 1

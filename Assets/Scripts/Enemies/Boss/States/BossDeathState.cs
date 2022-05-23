@@ -17,6 +17,7 @@ public class BossDeathState : State
         {
             _bossController.isAnyStateRunning = true;
             _bossController.isFallen = true;
+            _bossController.isDead = true;
 
             _movement.Set(0.0f, 0.0f, 0.0f);
             Flip();

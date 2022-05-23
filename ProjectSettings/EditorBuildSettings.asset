@@ -36,8 +36,20 @@ EditorBuildSettings:
     path: Assets/Scenes/General/Bosque/PreBoss.unity
     guid: 5de58bbe1f92a5a4bb265e88343bcf81
   - enabled: 1
-    path: Assets/Scenes/General/Boss.unity
+    path: Assets/Scenes/General/Boss/Boss.unity
     guid: 036380b2f783c7441bf6ee7dcd431af1
+  - enabled: 1
+    path: Assets/Scenes/General/Boss/BossFinalBueno.unity
+    guid: 9a3d531ea6c1cf24a8a4a60dd4fecfdf
+  - enabled: 1
+    path: Assets/Scenes/General/Boss/BossFinalMalo.unity
+    guid: 3ba9c96ed2e01664eb0f9f118f308d95
+  - enabled: 1
+    path: Assets/Scenes/General/Boss/FinalBueno.unity
+    guid: 021e7311cfdc9df4cae1ed09f73aa390
+  - enabled: 1
+    path: Assets/Scenes/General/Boss/FinalMalo.unity
+    guid: 47551929ed0fbc34a8451a4a8473c9e5
   - enabled: 1
     path: Assets/Scenes/Limbo/Limbo1.unity
     guid: 1f92b22483ae45640a11e4c24b89bf78

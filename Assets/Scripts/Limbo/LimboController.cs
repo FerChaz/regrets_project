@@ -62,6 +62,7 @@ namespace scripts.limbo.limboController
 
         public void UnloadLimboScene()
         {
+            sceneController.StopMusic(true);
             if (_random == 1)
             {
                 StartCoroutine(WaitToUnload("Limbo1"));

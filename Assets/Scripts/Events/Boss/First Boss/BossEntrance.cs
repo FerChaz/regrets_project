@@ -17,12 +17,17 @@ public class BossEntrance : MonoBehaviour
     public VIDEPlayer videPlayer;
 
     //Stored current VA when inside
-    public VIDE_Assign dialogue;
+    public VIDE_Assign dialogueIntro;
+    public VIDE_Assign dialogueEnd;
 
     //Reference to our diagUI script for quick access
     public VIDEUIManager1 diagUI;
 
     public ObjectStatus eventHappened;
+
+    public GameObject canvasDefeated;
+
+    private BoxCollider collider;
 
     private void Awake()
     {
@@ -30,29 +35,16 @@ public class BossEntrance : MonoBehaviour
         sceneController = FindObjectOfType<SceneController>();
         player = FindObjectOfType<PlayerController>();
         videPlayer = player.GetComponentInChildren<VIDEPlayer>();
+        collider = GetComponent<BoxCollider>();
     }
 
-    /*private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            /*if (eventHappened.eventAlreadyHappened)
-            {
-                return;
-            }
-            //else
-            //{
-                diagUI.Interact(dialogue);
-            //}
-        }
-    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Boss"))
         {
-            videPlayer.inTrigger = dialogue;
-            diagUI.Interact(dialogue);
+            videPlayer.inTrigger = dialogueIntro;
+            diagUI.Interact(dialogueIntro);
 
             bossController.animatorController.Landing();
         }
@@ -63,6 +55,18 @@ public class BossEntrance : MonoBehaviour
         videPlayer.inTrigger = null;
         bossController.isEntranceStateRunning = false;
         sceneController.StartMusic(musicIndex);
-        this.gameObject.SetActive(false);
+        collider.enabled = false;
+    }
+
+    public void Defeated()
+    {
+        videPlayer.inTrigger = dialogueEnd;
+        diagUI.Interact(dialogueEnd);
+    }
+
+    public void EndDialogue()
+    {
+        videPlayer.inTrigger = null;
+        canvasDefeated.SetActive(true);
     }
 }
