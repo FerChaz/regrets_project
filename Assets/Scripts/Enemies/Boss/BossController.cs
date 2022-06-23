@@ -53,6 +53,7 @@ public class BossController : MonoBehaviour
 
     [Header("Player")]
     public GameObject player;
+    public LifeController playerLife;
 
     [Header("Gravity")]
     public float gravityScale = 1.0f;
@@ -72,6 +73,7 @@ public class BossController : MonoBehaviour
         animatorController = GetComponentInChildren<BossAnimatorController>();
         boxCollider = GetComponent<CapsuleCollider>();
         parabolaController = GetComponent<ParabolaController>();
+        playerLife = FindObjectOfType<LifeController>();
     }
 
     private void Start()
@@ -119,6 +121,7 @@ public class BossController : MonoBehaviour
     public void Defeated()
     {
         canvasDecidir.SetActive(true);
+        playerLife.RestoreMaxLife();
     }
 
 #if UNITY_EDITOR

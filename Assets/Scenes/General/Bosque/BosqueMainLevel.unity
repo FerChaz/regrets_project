@@ -6313,10 +6313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesToChargeInAdditive:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 58336d1312cb0a442a0cd725b4da84c2, type: 2}
+  - {fileID: 11400000, guid: 162ff6bf0ab411a4586df5fe1702f406, type: 2}
+  - {fileID: 11400000, guid: b5deb45754f2c2a439ac6a008a30f135, type: 2}
   checkpointSceneName: {fileID: 11400000, guid: 6e7d342ff5212734591d08ed67f74ec5, type: 2}
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
   additiveScenesScriptableObject: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
@@ -6330,6 +6329,8 @@ MonoBehaviour:
   transitionCanvas: {fileID: 0}
   canvasAnimator: {fileID: 0}
   musicToPlay: 0
+  colorToChange: {r: 0.7294118, g: 0.43137255, b: 0.9254902, a: 1}
+  intensity: 1.5
 --- !u!65 &401676544
 BoxCollider:
   m_ObjectHideFlags: 0

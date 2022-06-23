@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using scripts.sceneManager.sceneController;
+using scripts.etiquetas.mainlight;
 
 namespace scripts.checkpoint.checkpoint
 {
@@ -36,6 +37,11 @@ namespace scripts.checkpoint.checkpoint
 
         public int musicToPlay;
 
+        [Header("Ilumination")]
+        public Color colorToChange;
+        public float intensity;
+        private Light directionalLight;
+
         #endregion
 
         #region Awake & Start
@@ -50,6 +56,8 @@ namespace scripts.checkpoint.checkpoint
 
             transitionCanvas = GameObject.Find("TransitionCanvas");
             canvasAnimator = transitionCanvas.GetComponentInChildren<Animator>();
+
+            directionalLight = FindObjectOfType<MainLight>().GetComponent<Light>();
         }
 
         #endregion
@@ -109,6 +117,9 @@ namespace scripts.checkpoint.checkpoint
             _sceneController.StartMusic(musicToPlay);
             canvas.SetActive(false);
             _particle.Play();
+
+            directionalLight.color = colorToChange;
+            directionalLight.intensity = intensity;
 
             _lifeController.RestoreMaxLife();
 

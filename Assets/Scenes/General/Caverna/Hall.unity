@@ -11058,7 +11058,7 @@ MonoBehaviour:
   soulManager: {fileID: 0}
   _chestAnimator: {fileID: 0}
   _isClosed: 1
-  chestState: {fileID: 11400000, guid: 18d59263aba557b4cb78c9145826a0f2, type: 2}
+  chestState: {fileID: 11400000, guid: 4c55125d075df6f43bf84f80577992ce, type: 2}
   chestAperture: {fileID: 8300000, guid: 15f454cb09880764eaa69bf21db78c4e, type: 3}
   audioSource: {fileID: 249624159}
 --- !u!65 &249624158
@@ -47768,8 +47768,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesToChargeInAdditive:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ed45d95e028021d45815ff2af4e5447a, type: 2}
+  - {fileID: 11400000, guid: 09c3ab621466a9e42a086378bb04600a, type: 2}
   checkpointSceneName: {fileID: 11400000, guid: c6bdfb4a227613d4fb22803417f20f2f, type: 2}
   respawnInfo: {fileID: 11400000, guid: f109a9748cb379b4d8e8478798f474ad, type: 2}
   additiveScenesScriptableObject: {fileID: 11400000, guid: f345fc04864938a4b8f05d6929e96ad6, type: 2}
@@ -47782,6 +47782,8 @@ MonoBehaviour:
   transitionCanvas: {fileID: 0}
   canvasAnimator: {fileID: 0}
   musicToPlay: 1
+  colorToChange: {r: 0.90588236, g: 0.5882353, b: 0.27058825, a: 0}
+  intensity: 1.5
 --- !u!65 &997357074
 BoxCollider:
   m_ObjectHideFlags: 0
