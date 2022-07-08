@@ -6,48 +6,36 @@ using UnityEngine.UI;
 
 public class LaunchKnife : MonoBehaviour
 {
-    [Header("Variables del Cuchillo")]
-    public float staminaTotal=100.0f;
-    public float staminaPlayer=100.0f;
-
     public GameObject Knife;
     public Transform spawnKnife;
 
-    public float costLaunchKnife=60.0f;
+    public float costLaunchKnife = 60.0f;
 
-    public float forceKnife=1000f;
+    public float forceKnife = 1000f;
 
     public bool canLaunchKnife = true;
+    
+    public float lifeKnife;
 
-    [Header("UI Stamina Knife")]
-    [SerializeField] private Image staminaProgresivessUI = null;
-    [SerializeField] private CanvasGroup sliderCanvasGroup = null;
+    [SerializeField] private StaminaSistem staminaSistem; //Referencia al sistema de estamina
 
-    [Header("Regenerate Parametros")]
-    [Range(0, 50)] [SerializeField] private float staminaRegenerate = 1f;
-
+    private void Start()
+    {
+        //staminaSistem = GetComponent<StaminaSistem>();
+    }
     private void Update()
     {
-        staminaProgresivessUI.fillAmount = staminaPlayer / staminaTotal;
-        if(staminaPlayer<staminaTotal)staminaPlayer += staminaRegenerate*Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.S)) LauncherKnife();
     }
-
-    private void SubstractStamina()
-    {
-        if (staminaPlayer >= costLaunchKnife) canLaunchKnife = true;
-        else canLaunchKnife = false;
-    }
-
     public void LauncherKnife()
     {
-        SubstractStamina();
-        if (canLaunchKnife)
+        if (staminaSistem.playerActualStamine >= costLaunchKnife)
         {
             GameObject newKinife;
-            newKinife = Instantiate(Knife,spawnKnife.position,spawnKnife.rotation);
+            newKinife = Instantiate(Knife, spawnKnife.position, spawnKnife.rotation);
             newKinife.GetComponent<Rigidbody>().AddForce(spawnKnife.forward * forceKnife);
-            staminaPlayer -= costLaunchKnife;
-            Destroy(newKinife, 1);
+            staminaSistem.SubstractStamina(costLaunchKnife);
+            Destroy(newKinife, lifeKnife);
         }
     }
-}
+    }

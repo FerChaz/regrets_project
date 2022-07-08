@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ScriptKnifeLauncher : MonoBehaviour
 {
-    public LaunchKnife LaunchKnife;
-    void Start()
-    {
-        
-    }
-
+    public LaunchKnife launchKnife;
+  
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S)) LaunchKnife.LauncherKnife();
+        if (Input.GetKeyDown(KeyCode.S)) launchKnife.LauncherKnife();
     }
 }
