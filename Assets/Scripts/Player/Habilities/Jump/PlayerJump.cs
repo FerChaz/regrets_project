@@ -89,7 +89,7 @@ public class PlayerJump : PlayerHabilities
             jumpTimeCounter = jumpTime;
         }*/
 
-        if(Input.GetButtonDown("Jump") && _player.isGrounded && _player.canJump)
+        /*if(Input.GetButtonDown("Jump") && _player.isGrounded && _player.canJump)
         {
             mainCamera.ChangeSmoothTimeY(smoothJump);
             _player.rigidBody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
@@ -117,7 +117,7 @@ public class PlayerJump : PlayerHabilities
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
-        }
+        }*/
         
     }
 

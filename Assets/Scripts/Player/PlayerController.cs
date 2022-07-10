@@ -110,6 +110,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        Jump();
+
         CheckInput();
         Flip();
         
@@ -160,6 +171,57 @@ public class PlayerController : MonoBehaviour
             {
                 playerModel.transform.eulerAngles = playerRotation;
             }
+        }
+    }
+
+    #endregion
+
+    #region Jump
+
+    public bool isJumping;
+    public float smoothJump;
+    public float jumpVelocity;
+    public float jumpTime;
+    public float jumpTimeCounter;
+    public float jumpForceToHold;
+    private Vector3 jumpForce;
+
+    public float coyoteTime = 0.2f;
+    public float coyoteTimeCounter;
+
+    public float jumpBufferTime = 0.2f;
+    public float jumpBufferCounter;
+
+    private void Jump()
+    {
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && canJump && !isJumping)
+        {
+            jumpBufferCounter = 0f;
+            Debug.Log("Salta");
+            mainCamera.ChangeSmoothTimeY(smoothJump);
+            rigidBody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+        }
+
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                jumpForce.Set(rigidBody.velocity.x, jumpForceToHold, 0.0f);
+                rigidBody.velocity = jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            coyoteTimeCounter = 0f;
+            isJumping = false;
         }
     }
 
@@ -220,7 +282,12 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             amountOfDash = 1;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
     }

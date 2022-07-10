@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005613903, g: 0.014590438, b: 0.06470939, a: 1}
+  m_IndirectSpecularColor: {r: 0.0056186034, g: 0.01458778, b: 0.06467861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,6 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88219581}
+  - component: {fileID: 88219582}
   m_Layer: 9
   m_Name: Attack Range
   m_TagString: Untagged
@@ -317,6 +318,19 @@ Transform:
   m_Father: {fileID: 1537300092}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &88219582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88219580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &114265342
 GameObject:
   m_ObjectHideFlags: 0
@@ -15796,6 +15810,16 @@ MonoBehaviour:
   canChangeGravity: 1
   mainCamera: {fileID: 0}
   multiplierX: 3
+  isJumping: 0
+  smoothJump: 0.05
+  jumpVelocity: 10
+  jumpTime: 0.35
+  jumpTimeCounter: 0
+  jumpForceToHold: 25
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
+  jumpBufferTime: 0.2
+  jumpBufferCounter: 0
   checkcapsuStart: {fileID: 0}
   checkcapsuEnd: {fileID: 0}
   checkcapsuRadius: 0
